@@ -3,10 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Taxi Paris Karim | Agréé G7 | Paris & Île-de-France</title>
-  <meta name="description" content="Taxi Paris Karim, taxi officiel agréé G7. Paris & Île-de-France. CDG, Orly, Beauvais, gares parisiennes. Réservation 24/7." />
+
+  <title>Taxi Paris Karim | Taxi Paris CDG Orly | Agréé G7</title>
+  <meta name="description" content="Taxi Paris Karim, taxi parisien agréé G7. Transferts Paris ⇄ CDG, Orly, Beauvais. Gares parisiennes. Paris & Île-de-France. Paiement CB/Apple Pay/PayPal. Facture sur demande." />
   <meta name="keywords" content="Taxi Paris, Taxi Paris Karim, Taxi Paris CDG, Taxi Paris Orly, Taxi CDG Paris, Taxi Orly Paris, Taxi Beauvais Paris, Taxi gare du nord, Taxi gare de lyon, Taxi Montparnasse, Taxi Saint Lazare, Taxi Paris île de france" />
   <meta name="theme-color" content="#0A0A0A" />
+
+  <!-- Open Graph (partage WhatsApp / réseaux) -->
+  <meta property="og:title" content="Taxi Paris Karim | Taxi Paris CDG Orly | Agréé G7" />
+  <meta property="og:description" content="Taxi officiel Paris & Île-de-France. CDG, Orly, Beauvais, gares, longue distance. Réservation 24/7." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
@@ -32,7 +38,42 @@
         linear-gradient(180deg, #050505, #0a0a0a 40%, #070707);
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1160px; margin:0 auto; padding:18px 18px 92px}
+
+    /* ===== Animations haut de gamme (douces) ===== */
+    @media (prefers-reduced-motion: no-preference){
+      .reveal{
+        opacity:0;
+        transform: translateY(16px);
+        transition: opacity .85s ease, transform .85s cubic-bezier(.2,.8,.2,1);
+        will-change: opacity, transform;
+      }
+      .reveal.is-in{
+        opacity:1;
+        transform: translateY(0);
+      }
+      .float-glow{
+        position:absolute; inset:-1px;
+        pointer-events:none;
+        background: radial-gradient(600px 260px at 20% 10%, rgba(241,216,154,.14), transparent 60%);
+        filter: blur(0px);
+        opacity:.8;
+        animation: glowMove 10s ease-in-out infinite;
+      }
+      @keyframes glowMove{
+        0%,100%{ transform: translate3d(0,0,0); opacity:.75; }
+        50%{ transform: translate3d(10px, -8px,0); opacity:.95; }
+      }
+      .btn, .lang button, nav a{
+        transition: transform .2s ease, background .2s ease, border-color .2s ease, filter .2s ease;
+      }
+      .btn:hover{ transform: translateY(-1px); }
+      .card:hover, .panel:hover, section.block:hover{
+        transform: translateY(-2px);
+        transition: transform .35s ease;
+      }
+    }
+
+    .wrap{max-width:1160px; margin:0 auto; padding:18px 18px 92px;}
     .topbar{
       position:sticky; top:0; z-index:30;
       padding:10px 0;
@@ -43,10 +84,7 @@
     header{
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width:260px;
-    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:260px;}
     .mark{
       width:42px; height:42px; border-radius:14px;
       background:
@@ -55,10 +93,7 @@
       border:1px solid rgba(241,216,154,.25);
       box-shadow: 0 18px 55px rgba(0,0,0,.65);
     }
-    .brand .name{
-      display:flex; flex-direction:column; line-height:1.05;
-      font-weight:950; letter-spacing:.2px;
-    }
+    .brand .name{display:flex; flex-direction:column; line-height:1.05; font-weight:950; letter-spacing:.2px;}
     .brand small{ margin-top:3px; color:rgba(244,241,234,.72); font-weight:800; letter-spacing:.25px; }
 
     nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
@@ -75,9 +110,7 @@
       color: var(--txt);
     }
 
-    .lang{
-      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;
-    }
+    .lang{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;}
     .lang button{
       background: rgba(255,255,255,.02);
       border:1px solid rgba(214,179,106,.25);
@@ -134,7 +167,6 @@
       letter-spacing:.25px;
     }
     .dot{ width:8px; height:8px; border-radius:99px; background:var(--gold2); box-shadow:0 0 0 6px rgba(214,179,106,.15); }
-
     h1{ margin:14px 0 10px; font-size:44px; line-height:1.03; letter-spacing:-.6px; }
     .lead{ color: rgba(244,241,234,.80); line-height:1.7; font-size:15.5px; max-width:60ch; }
 
@@ -183,7 +215,6 @@
     .split{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
     ul.list{ margin:10px 0 0; padding-left:16px; color: var(--muted); line-height:1.7; font-size:13.6px; }
 
-    /* Payments */
     .paywrap{ margin-top:14px; }
     .paytitle{ font-size:13px; font-weight:950; letter-spacing:.2px; margin:0 0 8px; color:rgba(244,241,234,.82); }
     .badges{ display:flex; flex-wrap:wrap; gap:8px; }
@@ -211,6 +242,15 @@
     }
     section.block h2{ margin:0 0 10px; font-size:20px; }
     section.block p{ margin:0; color: var(--muted); line-height:1.7; }
+
+    .mapBox{
+      margin-top:12px;
+      border:1px solid rgba(214,179,106,.14);
+      border-radius:22px;
+      overflow:hidden;
+      background: rgba(0,0,0,.25);
+    }
+    .mapBox iframe{ width:100%; height:340px; border:0; display:block; }
 
     .form{ display:grid; gap:10px; margin-top:10px; }
     input, textarea, select{
@@ -254,6 +294,25 @@
       .topbar{position:relative}
     }
   </style>
+
+  <!-- Données structurées (aide Google à comprendre ton activité) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TaxiService",
+    "name":"Taxi Paris Karim",
+    "areaServed":["Paris","Île-de-France"],
+    "telephone":"+33781615418",
+    "url":"https://rimk10.github.io/taxi-paris-karim/",
+    "serviceType":[
+      "Taxi Paris",
+      "Taxi Paris CDG",
+      "Taxi Paris Orly",
+      "Taxi Beauvais Paris",
+      "Taxi gares parisiennes"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -274,6 +333,7 @@
         <a href="#orly" data-i18n="nav_orly">Orly</a>
         <a href="#beauvais" data-i18n="nav_beauvais">Beauvais</a>
         <a href="#gares" data-i18n="nav_gares">Gares</a>
+        <a href="#map" data-i18n="nav_map">Carte</a>
         <a href="#tarifs" data-i18n="nav_tarifs">Tarification</a>
         <a href="#contact" data-i18n="nav_contact">Réserver</a>
       </nav>
@@ -286,9 +346,11 @@
     </header>
   </div>
 
-  <section class="hero" id="top">
+  <section class="hero reveal" id="top">
+    <div class="float-glow" aria-hidden="true"></div>
+
     <div class="heroInner">
-      <div>
+      <div class="reveal">
         <div class="kicker"><span class="dot"></span> <span data-i18n="kicker">Disponibilité 24/7 · Réservation rapide</span></div>
 
         <h1 data-i18n="h1">Taxi Paris Karim</h1>
@@ -303,25 +365,23 @@
           <a class="btn" href="#contact" data-i18n="book">🗓️ Réserver</a>
         </div>
 
-        <div class="paywrap">
+        <div class="paywrap reveal">
           <p class="paytitle" data-i18n="pay_title">Paiements acceptés</p>
           <div class="badges" aria-label="Accepted payments">
             <span class="badge">
               <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 7.5h18M5 10.5h14M6.5 16h4M3.5 18.5h17a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-17a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
               <span data-i18n="pay_cards">CB & toutes cartes</span>
             </span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0Z" stroke="currentColor" stroke-width="1.7"/></svg>Visa</span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M7.5 8.5a4 4 0 1 0 0 7 4 4 0 0 0 0-7Z" stroke="currentColor" stroke-width="1.7"/><path d="M16.5 8.5a4 4 0 1 0 0 7 4 4 0 0 0 0-7Z" stroke="currentColor" stroke-width="1.7"/></svg>Mastercard</span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 6.7H21l-5.4 3.9 2.1 6.7L12 16.5 6.3 20.3l2.1-6.7L3 9.7h6.8L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Amex</span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M7 12c0-3 2-5 5-5 2.2 0 4 1.2 4.7 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 12c0-1.9 1.1-3.2 3-3.2 1.4 0 2.5.7 2.9 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M11 12c0-1 .6-1.7 1.6-1.7.8 0 1.3.4 1.5 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="pay_contactless">Sans contact</span></span>
             <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 3c2.8 0 5 2.2 5 5 0 3.7-5 13-5 13S7 11.7 7 8c0-2.8 2.2-5 5-5Z" stroke="currentColor" stroke-width="1.7"/></svg>Apple Pay</span>
             <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M20 8.5c-1.2-2.3-3.8-4-6.6-4-3.4 0-6.1 2-7.4 5.1-1.2 3 0 6.5 3 8.3 1.2.7 2.5 1.1 3.9 1.1 2.7 0 5.1-1.3 6.5-3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>PayPal</span>
             <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 6.5h7a3 3 0 1 1 0 6H8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="pay_cash">Espèces</span></span>
+            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M7 12c0-3 2-5 5-5 2.2 0 4 1.2 4.7 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 12c0-1.9 1.1-3.2 3-3.2 1.4 0 2.5.7 2.9 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="pay_contactless">Sans contact</span></span>
+            <span class="badge"><span data-i18n="invoice">🧾 Facture sur demande</span></span>
           </div>
           <p class="hint" data-i18n="pay_note" style="margin-top:8px">Paiement simple et sécurisé à bord.</p>
         </div>
 
-        <div class="grid3" id="services">
+        <div class="grid3 reveal" id="services">
           <div class="card">
             <h3>✈️ <span data-i18n="srv_air_t">Aéroports</span></h3>
             <p data-i18n="srv_air_p">CDG · Orly · Beauvais : départs, arrivées, prise en charge aux terminaux.</p>
@@ -338,12 +398,12 @@
       </div>
 
       <aside class="aside">
-        <div class="panel">
+        <div class="panel reveal">
           <h2 data-i18n="g7_t">Réseau G7</h2>
           <div id="g7Lines"></div>
         </div>
 
-        <div class="panel">
+        <div class="panel reveal">
           <h2 data-i18n="tarifs_t">Tarification expliquée aux clients</h2>
           <p class="hint" data-i18n="tarifs_intro">
             Dans la zone des taxis parisiens, des forfaits aéroports réglementés s’appliquent.
@@ -381,32 +441,83 @@
     </div>
   </section>
 
-  <section class="block" id="cdg">
+  <!-- SEO sections (mots clés naturels) -->
+  <section class="block reveal" id="cdg">
     <h2 data-i18n="cdg_t">Taxi Paris ⇄ Aéroport Charles-de-Gaulle (CDG)</h2>
     <p data-i18n="cdg_p">Transferts entre Paris et CDG. Prise en charge aux terminaux, départs et arrivées, 24/7.</p>
+    <p class="hint" data-i18n="seo_cdg">
+      Recherche fréquente : <strong>Taxi Paris CDG</strong> / <strong>Taxi CDG Paris</strong>. Réservation simple par téléphone ou WhatsApp.
+    </p>
   </section>
 
-  <section class="block" id="orly">
+  <section class="block reveal" id="orly">
     <h2 data-i18n="orly_t">Taxi Paris ⇄ Aéroport d’Orly</h2>
     <p data-i18n="orly_p">Transferts entre Paris et Orly. Prise en charge aux terminaux, départs et arrivées, 24/7.</p>
+    <p class="hint" data-i18n="seo_orly">
+      Recherche fréquente : <strong>Taxi Paris Orly</strong> / <strong>Taxi Orly Paris</strong>. Service ponctuel, tarifs réglementés.
+    </p>
   </section>
 
-  <section class="block" id="beauvais">
+  <section class="block reveal" id="beauvais">
     <h2 data-i18n="beauvais_t">Taxi Beauvais ⇄ Paris</h2>
     <p data-i18n="beauvais_p">Trajet longue distance entre Paris et l’aéroport de Beauvais-Tillé. Réservation simple, service ponctuel.</p>
   </section>
 
-  <section class="block" id="gares">
+  <section class="block reveal" id="gares">
     <h2 data-i18n="gares_t">Taxi Gares parisiennes</h2>
     <p data-i18n="gares_p">Transferts vers/depuis : Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.</p>
   </section>
 
-  <section class="block" id="tarifs">
+  <!-- Google Maps -->
+  <section class="block reveal" id="map">
+    <h2 data-i18n="map_t">Carte & zone d’intervention</h2>
+    <p class="hint" data-i18n="map_p">
+      Paris & Île-de-France. Pour un itinéraire, ouvrez Google Maps et envoyez votre adresse.
+    </p>
+
+    <div class="mapBox">
+      <!-- Carte centrée sur Paris (sans adresse privée) -->
+      <iframe
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Paris&output=embed"
+        title="Carte Google Maps - Paris">
+      </iframe>
+    </div>
+
+    <div class="cta" style="margin-top:12px">
+      <a class="btn" href="https://www.google.com/maps?q=Paris" target="_blank" rel="noopener" data-i18n="map_open">🗺️ Ouvrir dans Google Maps</a>
+      <a class="btn" href="https://wa.me/33781615418?text=Bonjour%20je%20souhaite%20un%20itin%C3%A9raire%20depuis%20(mon%20adresse)%20vers%20(ma%20destination)" target="_blank" rel="noopener" data-i18n="map_send">📍 Envoyer mon adresse sur WhatsApp</a>
+    </div>
+  </section>
+<section class="block reveal" id="seo">
+  <h2>Taxi Paris & Île-de-France</h2>
+
+  <p>
+    Taxi Paris Karim est un chauffeur de taxi parisien agréé G7, assurant des trajets fiables
+    et réglementés à Paris et en Île-de-France. Je propose des transferts vers les aéroports
+    de Paris Charles-de-Gaulle, Orly et Beauvais, ainsi que les principales gares parisiennes.
+  </p>
+
+  <p>
+    J’interviens régulièrement dans des secteurs comme Paris 8e, Paris 16e,
+    Neuilly-sur-Seine, Boulogne-Billancourt, Vincennes et Versailles.
+    Les forfaits aéroports réglementés s’appliquent dans la zone des taxis parisiens.
+    En dehors de cette zone, la course est effectuée au taximètre.
+  </p>
+
+  <p>
+    Taxi Paris Karim propose un service professionnel, ponctuel et transparent,
+    avec paiement CB, sans contact, Apple Pay, PayPal et espèces.
+    <strong>Facture sur demande.</strong>
+  </p>
+</section>
+  <section class="block reveal" id="tarifs">
     <h2 data-i18n="tarifs_t">Tarification expliquée aux clients</h2>
     <p class="hint" data-i18n="tarifs_intro"></p>
   </section>
 
-  <section class="block" id="contact">
+  <section class="block reveal" id="contact">
     <h2 data-i18n="contact_t">Réserver / demander une estimation</h2>
     <p class="hint" data-i18n="contact_hint">Réponse rapide par téléphone ou WhatsApp.</p>
 
@@ -454,10 +565,18 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add("is-in");
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+
   const T = {
     fr:{
       sub:"Taxi officiel · Agréé G7",
-      nav_services:"Services", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Gares", nav_tarifs:"Tarification", nav_contact:"Réserver",
+      nav_services:"Services", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Gares", nav_map:"Carte", nav_tarifs:"Tarification", nav_contact:"Réserver",
       kicker:"Disponibilité 24/7 · Réservation rapide",
       h1:"Taxi Paris Karim",
       lead:"Paris & Île-de-France. Aéroports (CDG, Orly, Beauvais), gares parisiennes et longue distance. Service professionnel, ponctuel et clair.",
@@ -467,6 +586,7 @@
       pay_contactless:"Sans contact",
       pay_cash:"Espèces",
       pay_note:"Paiement simple et sécurisé à bord.",
+      invoice:"🧾 Facture sur demande",
       srv_air_t:"Aéroports", srv_air_p:"CDG · Orly · Beauvais : départs, arrivées, prise en charge aux terminaux.",
       srv_sta_t:"Gares", srv_sta_p:"Gare du Nord, Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
       srv_long_t:"Longue distance", srv_long_p:"Trajets sur demande : Lille, Bruxelles, Reims, Rouen, Amiens…",
@@ -492,9 +612,15 @@
       rd_list:"Rive Droite : 1, 2, 3, 4, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20",
       rg_list:"Rive Gauche : 5, 6, 7, 13, 14, 15",
       cdg_t:"Taxi Paris ⇄ Aéroport Charles-de-Gaulle (CDG)", cdg_p:"Transferts entre Paris et CDG. Prise en charge aux terminaux, départs et arrivées, 24/7.",
+      seo_cdg:"Recherche fréquente : Taxi Paris CDG / Taxi CDG Paris. Réservation simple par téléphone ou WhatsApp.",
       orly_t:"Taxi Paris ⇄ Aéroport d’Orly", orly_p:"Transferts entre Paris et Orly. Prise en charge aux terminaux, départs et arrivées, 24/7.",
+      seo_orly:"Recherche fréquente : Taxi Paris Orly / Taxi Orly Paris. Service ponctuel, tarifs réglementés.",
       beauvais_t:"Taxi Beauvais ⇄ Paris", beauvais_p:"Trajet longue distance entre Paris et l’aéroport de Beauvais-Tillé. Réservation simple, service ponctuel.",
       gares_t:"Taxi Gares parisiennes", gares_p:"Transferts vers/depuis : Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
+      map_t:"Carte & zone d’intervention",
+      map_p:"Paris & Île-de-France. Pour un itinéraire, ouvrez Google Maps et envoyez votre adresse.",
+      map_open:"🗺️ Ouvrir dans Google Maps",
+      map_send:"📍 Envoyer mon adresse sur WhatsApp",
       contact_t:"Réserver / demander une estimation", contact_hint:"Réponse rapide par téléphone ou WhatsApp.",
       type0:"Type de trajet…", type1:"Aéroport (CDG/Orly/Beauvais)", type2:"Gare", type3:"Paris / Île-de-France", type4:"Longue distance",
       prep:"Préparer le message", copy:"📋 Copier", send:"💬 Envoyer via WhatsApp",
@@ -502,7 +628,7 @@
     },
     en:{
       sub:"Official taxi · G7 approved",
-      nav_services:"Services", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Stations", nav_tarifs:"Fares", nav_contact:"Book",
+      nav_services:"Services", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Stations", nav_map:"Map", nav_tarifs:"Fares", nav_contact:"Book",
       kicker:"Available 24/7 · Fast booking",
       h1:"Taxi Paris Karim",
       lead:"Paris & Île-de-France. Airports (CDG, Orly, Beauvais), main train stations and long-distance trips. Professional and clear service.",
@@ -512,6 +638,7 @@
       pay_contactless:"Contactless",
       pay_cash:"Cash",
       pay_note:"Easy and secure payment in the vehicle.",
+      invoice:"🧾 Invoice on request",
       srv_air_t:"Airports", srv_air_p:"CDG · Orly · Beauvais: departures, arrivals, terminal pick-up.",
       srv_sta_t:"Train stations", srv_sta_p:"Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
       srv_long_t:"Long distance", srv_long_p:"On request: Lille, Brussels, Reims, Rouen, Amiens…",
@@ -537,9 +664,15 @@
       rd_list:"Right Bank: 1, 2, 3, 4, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20",
       rg_list:"Left Bank: 5, 6, 7, 13, 14, 15",
       cdg_t:"Taxi Paris ⇄ Charles-de-Gaulle Airport (CDG)", cdg_p:"Transfers between Paris and CDG. Terminal pick-up, departures and arrivals, 24/7.",
+      seo_cdg:"Popular search: Taxi Paris CDG / Taxi CDG Paris. Easy booking by phone or WhatsApp.",
       orly_t:"Taxi Paris ⇄ Orly Airport", orly_p:"Transfers between Paris and Orly. Terminal pick-up, departures and arrivals, 24/7.",
+      seo_orly:"Popular search: Taxi Paris Orly / Taxi Orly Paris. Punctual service, regulated fares.",
       beauvais_t:"Taxi Beauvais ⇄ Paris", beauvais_p:"Long-distance trip between Paris and Beauvais-Tillé airport. Easy booking, punctual service.",
       gares_t:"Paris train stations taxi", gares_p:"Transfers to/from: Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
+      map_t:"Map & service area",
+      map_p:"Paris & Île-de-France. For directions, open Google Maps and send your address.",
+      map_open:"🗺️ Open in Google Maps",
+      map_send:"📍 Send my address on WhatsApp",
       contact_t:"Book / request an estimate", contact_hint:"Fast reply by phone or WhatsApp.",
       type0:"Trip type…", type1:"Airport (CDG/Orly/Beauvais)", type2:"Train station", type3:"Paris / Île-de-France", type4:"Long distance",
       prep:"Prepare the message", copy:"📋 Copy", send:"💬 Send via WhatsApp",
@@ -547,7 +680,7 @@
     },
     es:{
       sub:"Taxi oficial · Autorizado G7",
-      nav_services:"Servicios", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Estaciones", nav_tarifs:"Tarifas", nav_contact:"Reservar",
+      nav_services:"Servicios", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Estaciones", nav_map:"Mapa", nav_tarifs:"Tarifas", nav_contact:"Reservar",
       kicker:"Disponible 24/7 · Reserva rápida",
       h1:"Taxi Paris Karim",
       lead:"París e Île-de-France. Aeropuertos (CDG, Orly, Beauvais), estaciones principales y viajes de larga distancia. Servicio profesional y claro.",
@@ -557,6 +690,7 @@
       pay_contactless:"Sin contacto",
       pay_cash:"Efectivo",
       pay_note:"Pago fácil y seguro en el vehículo.",
+      invoice:"🧾 Factura bajo petición",
       srv_air_t:"Aeropuertos", srv_air_p:"CDG · Orly · Beauvais: salidas, llegadas, recogida en terminal.",
       srv_sta_t:"Estaciones", srv_sta_p:"Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
       srv_long_t:"Larga distancia", srv_long_p:"Bajo pedido: Lille, Bruselas, Reims, Rouen, Amiens…",
@@ -582,9 +716,15 @@
       rd_list:"Ribera Derecha: 1, 2, 3, 4, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20",
       rg_list:"Ribera Izquierda: 5, 6, 7, 13, 14, 15",
       cdg_t:"Taxi París ⇄ Aeropuerto Charles-de-Gaulle (CDG)", cdg_p:"Traslados entre París y CDG. Recogida en terminal, salidas y llegadas, 24/7.",
+      seo_cdg:"Búsqueda popular: Taxi París CDG / Taxi CDG París. Reserva fácil por teléfono o WhatsApp.",
       orly_t:"Taxi París ⇄ Aeropuerto de Orly", orly_p:"Traslados entre París y Orly. Recogida en terminal, salidas y llegadas, 24/7.",
+      seo_orly:"Búsqueda popular: Taxi París Orly / Taxi Orly París. Servicio puntual, tarifas reguladas.",
       beauvais_t:"Taxi Beauvais ⇄ París", beauvais_p:"Viaje de larga distancia entre París y el aeropuerto Beauvais-Tillé. Reserva fácil, servicio puntual.",
       gares_t:"Taxi estaciones de París", gares_p:"Traslados hacia/desde: Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
+      map_t:"Mapa y zona de servicio",
+      map_p:"París e Île-de-France. Para rutas, abre Google Maps y envía tu dirección.",
+      map_open:"🗺️ Abrir en Google Maps",
+      map_send:"📍 Enviar mi dirección por WhatsApp",
       contact_t:"Reservar / pedir estimación", contact_hint:"Respuesta rápida por teléfono o WhatsApp.",
       type0:"Tipo de viaje…", type1:"Aeropuerto (CDG/Orly/Beauvais)", type2:"Estación", type3:"París / Île-de-France", type4:"Larga distancia",
       prep:"Preparar el mensaje", copy:"📋 Copiar", send:"💬 Enviar por WhatsApp",
