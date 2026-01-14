@@ -2,775 +2,2116 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Taxi Paris Karim | Taxi Paris CDG Orly | Réservation & Estimation</title>
 
-  <title>Taxi Paris Karim | Taxi Paris CDG Orly | Agréé G7</title>
-  <meta name="description" content="Taxi Paris Karim, taxi parisien agréé G7. Transferts Paris ⇄ CDG, Orly, Beauvais. Gares parisiennes. Paris & Île-de-France. Paiement CB/Apple Pay/PayPal. Facture sur demande." />
-  <meta name="keywords" content="Taxi Paris, Taxi Paris Karim, Taxi Paris CDG, Taxi Paris Orly, Taxi CDG Paris, Taxi Orly Paris, Taxi Beauvais Paris, Taxi gare du nord, Taxi gare de lyon, Taxi Montparnasse, Taxi Saint Lazare, Taxi Paris île de france" />
-  <meta name="theme-color" content="#0A0A0A" />
+  <meta name="description" content="Taxi Paris Karim — service premium en Île-de-France. Réservation, transferts CDG/Orly, longue distance. Paiements CB, Apple Pay, Google Pay, PayPal. Facture sur demande." />
+  <meta name="keywords" content="Taxi Paris, Taxi CDG, Taxi Orly, Taxi Villepinte, Taxi Versailles, Taxi Île-de-France, Réservation taxi, Taxi premium, Transfert aéroport, Paris Beauvais, Orly Beauvais, CDG Beauvais, CDG Orly, Orly CDG, Estimation taxi Paris" />
+  <meta name="theme-color" content="#0b0c10" />
 
-  <!-- Open Graph (partage WhatsApp / réseaux) -->
-  <meta property="og:title" content="Taxi Paris Karim | Taxi Paris CDG Orly | Agréé G7" />
-  <meta property="og:description" content="Taxi officiel Paris & Île-de-France. CDG, Orly, Beauvais, gares, longue distance. Réservation 24/7." />
+  <!-- Open Graph / WhatsApp preview -->
+  <meta property="og:title" content="Taxi Paris Karim — Réservation & Estimation" />
+  <meta property="og:description" content="Service taxi premium à Paris & Île-de-France. Transferts CDG/Orly, longue distance, paiements CB/Apple Pay/Google Pay/PayPal. Facture sur demande." />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
 
   <style>
     :root{
-      --bg:#070707;
-      --txt:#f4f1ea;
-      --muted:rgba(244,241,234,.72);
-      --muted2:rgba(244,241,234,.60);
+      --bg:#07080b;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.10);
+      --txt:#f7f6f2;
+      --muted:rgba(247,246,242,.72);
+      --muted2:rgba(247,246,242,.56);
       --gold:#d6b36a;
       --gold2:#f1d89a;
-      --line:rgba(214,179,106,.16);
-      --glass:rgba(255,255,255,.04);
-      --shadow: 0 24px 80px rgba(0,0,0,.72);
+      --line:rgba(214,179,106,.18);
+      --shadow: 0 26px 90px rgba(0,0,0,.70);
+      --shadow2: 0 16px 50px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:24px;
+      --ok:#7CFFB2;
+      --warn:#ffcf66;
+      --bad:#ff6b6b;
+      --blue:#6bbcff;
+      --red:#ff3b3b;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--txt);
       background:
-        radial-gradient(900px 520px at 12% 0%, rgba(214,179,106,.14), transparent 60%),
-        radial-gradient(800px 520px at 88% 10%, rgba(241,216,154,.10), transparent 60%),
-        linear-gradient(180deg, #050505, #0a0a0a 40%, #070707);
+        radial-gradient(900px 700px at 20% 10%, rgba(214,179,106,.18), transparent 60%),
+        radial-gradient(900px 700px at 80% 0%, rgba(107,188,255,.14), transparent 55%),
+        radial-gradient(900px 700px at 70% 80%, rgba(255,59,59,.08), transparent 55%),
+        linear-gradient(180deg, #05060a 0%, #0b0c10 55%, #05060a 100%);
+      overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
-
-    /* ===== Animations haut de gamme (douces) ===== */
-    @media (prefers-reduced-motion: no-preference){
-      .reveal{
-        opacity:0;
-        transform: translateY(16px);
-        transition: opacity .85s ease, transform .85s cubic-bezier(.2,.8,.2,1);
-        will-change: opacity, transform;
-      }
-      .reveal.is-in{
-        opacity:1;
-        transform: translateY(0);
-      }
-      .float-glow{
-        position:absolute; inset:-1px;
-        pointer-events:none;
-        background: radial-gradient(600px 260px at 20% 10%, rgba(241,216,154,.14), transparent 60%);
-        filter: blur(0px);
-        opacity:.8;
-        animation: glowMove 10s ease-in-out infinite;
-      }
-      @keyframes glowMove{
-        0%,100%{ transform: translate3d(0,0,0); opacity:.75; }
-        50%{ transform: translate3d(10px, -8px,0); opacity:.95; }
-      }
-      .btn, .lang button, nav a{
-        transition: transform .2s ease, background .2s ease, border-color .2s ease, filter .2s ease;
-      }
-      .btn:hover{ transform: translateY(-1px); }
-      .card:hover, .panel:hover, section.block:hover{
-        transform: translateY(-2px);
-        transition: transform .35s ease;
-      }
+    .container{width:min(1120px, calc(100% - 40px)); margin:0 auto}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid var(--line);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color:var(--muted);
+      font-size:13px;
     }
-
-    .wrap{max-width:1160px; margin:0 auto; padding:18px 18px 92px;}
-    .topbar{
-      position:sticky; top:0; z-index:30;
-      padding:10px 0;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(180deg, rgba(8,8,8,.92), rgba(8,8,8,.40));
-      border-bottom:1px solid rgba(214,179,106,.10);
-    }
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .brand{display:flex; align-items:center; gap:12px; min-width:260px;}
-    .mark{
-      width:42px; height:42px; border-radius:14px;
-      background:
-        radial-gradient(16px 16px at 32% 30%, rgba(241,216,154,.55), transparent 65%),
-        linear-gradient(135deg, rgba(214,179,106,.95), rgba(214,179,106,.35));
-      border:1px solid rgba(241,216,154,.25);
-      box-shadow: 0 18px 55px rgba(0,0,0,.65);
-    }
-    .brand .name{display:flex; flex-direction:column; line-height:1.05; font-weight:950; letter-spacing:.2px;}
-    .brand small{ margin-top:3px; color:rgba(244,241,234,.72); font-weight:800; letter-spacing:.25px; }
-
-    nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{
-      font-size:12.5px;
-      color:rgba(244,241,234,.78);
-      padding:9px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    nav a:hover{
-      border-color: rgba(214,179,106,.22);
-      background: rgba(255,255,255,.03);
-      color: var(--txt);
-    }
-
-    .lang{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;}
-    .lang button{
-      background: rgba(255,255,255,.02);
-      border:1px solid rgba(214,179,106,.25);
-      color: var(--txt);
-      border-radius:12px;
-      padding:8px 10px;
+    .dot{width:8px; height:8px; border-radius:999px; background:var(--gold); box-shadow: 0 0 0 6px rgba(214,179,106,.16)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px; border-radius:14px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(214,179,106,.18), rgba(255,255,255,.04));
+      color:var(--txt);
+      box-shadow: var(--shadow2);
       cursor:pointer;
-      font-size:12px;
-      font-weight:950;
-      letter-spacing:.2px;
+      transition: transform .18s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
     }
-    .lang button.active{
-      background: linear-gradient(135deg, rgba(214,179,106,.42), rgba(255,255,255,.02));
-      border-color: rgba(241,216,154,.40);
+    .btn:hover{transform: translateY(-2px); border-color: rgba(214,179,106,.35)}
+    .btn.secondary{
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+    }
+    .btn.ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.18);
+      box-shadow: none;
+    }
+    .btn.small{padding:10px 12px; border-radius:12px; font-size:14px}
+    .btn.gold{
+      background: linear-gradient(180deg, rgba(241,216,154,.22), rgba(214,179,106,.10));
+      border-color: rgba(241,216,154,.35);
     }
 
-    .hero{
-      margin-top:16px;
-      border-radius:28px;
-      border:1px solid rgba(214,179,106,.14);
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,8,11,.60);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      letter-spacing:.4px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
       background:
-        radial-gradient(900px 520px at 10% 0%, rgba(214,179,106,.18), transparent 60%),
-        radial-gradient(740px 520px at 88% 20%, rgba(241,216,154,.10), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+        radial-gradient(16px 16px at 30% 30%, rgba(241,216,154,.85), rgba(214,179,106,.25)),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      border:1px solid rgba(241,216,154,.30);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+      display:grid; place-items:center;
+    }
+    .logo svg{opacity:.95}
+    .brand-title{font-weight:700; font-size:15px}
+    .brand-sub{font-size:12px; color:var(--muted2); margin-top:2px}
+    .nav{display:flex; gap:18px; align-items:center}
+    .nav a{color:var(--muted); font-size:14px; padding:10px 8px; border-radius:12px}
+    .nav a:hover{background: rgba(255,255,255,.06); color:var(--txt)}
+    .right-actions{display:flex; gap:10px; align-items:center}
+    .lang{
+      display:flex; gap:8px; align-items:center;
+      padding:8px 10px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .lang button{
+      border:0; background:transparent; color:var(--muted);
+      cursor:pointer; font-weight:700; font-size:12px; padding:6px 8px; border-radius:10px;
+    }
+    .lang button.active{background: rgba(214,179,106,.18); color:var(--txt); border:1px solid rgba(214,179,106,.25)}
+    .burger{
+      display:none;
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      align-items:center; justify-content:center;
+    }
+    .burger svg{opacity:.9}
+    .drawer{
+      position:fixed; inset:0; z-index:80;
+      background: rgba(0,0,0,.55);
+      opacity:0; pointer-events:none;
+      transition: opacity .2s ease;
+    }
+    .drawer.open{opacity:1; pointer-events:auto}
+    .panel{
+      position:absolute; right:0; top:0; height:100%;
+      width:min(380px, 90vw);
+      background: rgba(11,12,16,.92);
+      border-left:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      transform: translateX(100%);
+      transition: transform .22s ease;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding:18px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .drawer.open .panel{transform: translateX(0)}
+    .panel a{
+      padding:14px 12px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--txt);
+    }
+    .panel a:hover{border-color: rgba(214,179,106,.35)}
+    .panel .closeRow{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px}
+    .panel .closeRow .x{
+      width:44px; height:44px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      display:grid; place-items:center;
+    }
+
+    /* Hero */
+    .hero{padding:54px 0 28px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    .hero-card{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
-    .hero:before{
+    .hero-card::before{
       content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 300px at 20% 0%, rgba(241,216,154,.22), transparent 55%),
+                  radial-gradient(600px 300px at 80% 15%, rgba(107,188,255,.12), transparent 50%);
+      pointer-events:none;
+    }
+    .hero-pad{padding:28px; position:relative}
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(28px, 4.2vw, 44px);
+      letter-spacing: -0.6px;
+      line-height:1.08;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(14px, 2vw, 17px);
+      line-height:1.55;
+      max-width: 60ch;
+    }
+    .hero-actions{margin-top:18px; display:flex; flex-wrap:wrap; gap:10px}
+    .mini{
+      margin-top:16px;
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .mini .chip{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .mini .chip strong{color:var(--txt)}
+    .hero-photo{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      min-height: 360px;
+    }
+    .hero-photo .img{
       position:absolute; inset:0;
       background:
-        linear-gradient(90deg, rgba(214,179,106,.10), transparent 35%),
-        radial-gradient(900px 220px at 30% 0%, rgba(241,216,154,.18), transparent 55%);
-      pointer-events:none;
-      opacity:.95;
+        linear-gradient(180deg, rgba(7,8,11,.35), rgba(7,8,11,.78)),
+        url("https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1600&q=70") center/cover no-repeat;
+      transform: scale(1.05);
+      filter: contrast(1.05) saturate(1.05);
     }
-    .heroInner{
-      position:relative;
-      padding:26px;
+    .hero-photo .overlay{
+      position:absolute; inset:0; padding:22px;
+      display:flex; flex-direction:column; justify-content:flex-end; gap:12px;
+    }
+    .statRow{display:flex; gap:10px; flex-wrap:wrap}
+    .stat{
+      flex:1 1 140px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding:12px 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .stat .k{font-size:12px; color:var(--muted2)}
+    .stat .v{font-size:16px; font-weight:800; margin-top:2px}
+    .glow{
+      position:absolute; width:680px; height:680px;
+      left:-260px; top:-380px;
+      background: radial-gradient(circle, rgba(241,216,154,.18), transparent 60%);
+      filter: blur(8px);
+      pointer-events:none;
+    }
+
+    /* Sections */
+    section{padding:46px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    h2{
+      margin:0;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing:-.3px;
+    }
+    .section-sub{
+      margin:0; color:var(--muted); max-width: 68ch; line-height:1.55; font-size:14px;
+    }
+    .grid-3{
       display:grid;
-      grid-template-columns: 1.12fr .88fr;
+      grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
-
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(214,179,106,.20);
-      background: rgba(0,0,0,.22);
-      color: rgba(244,241,234,.82);
-      font-size:12.5px;
-      letter-spacing:.25px;
-    }
-    .dot{ width:8px; height:8px; border-radius:99px; background:var(--gold2); box-shadow:0 0 0 6px rgba(214,179,106,.15); }
-    h1{ margin:14px 0 10px; font-size:44px; line-height:1.03; letter-spacing:-.6px; }
-    .lead{ color: rgba(244,241,234,.80); line-height:1.7; font-size:15.5px; max-width:60ch; }
-
-    .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:13px 15px;
-      border-radius:16px;
-      border:1px solid rgba(214,179,106,.25);
-      background: rgba(255,255,255,.03);
-      font-weight:950;
-      letter-spacing:.2px;
-      color: var(--txt);
-      cursor:pointer;
-    }
-    .btn:hover{ background: rgba(255,255,255,.05); }
-    .btn.primary{
-      border:none;
-      background: linear-gradient(135deg, rgba(214,179,106,.96), rgba(241,216,154,.56));
-      color:#1b1206;
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
-    }
-    .btn.primary:hover{ filter: brightness(1.03); }
-
-    .grid3{ margin-top:18px; display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
     .card{
-      border:1px solid rgba(214,179,106,.14);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(460px 240px at 20% 10%, rgba(214,179,106,.12), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .card > *{position:relative}
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+    .list{
+      margin:12px 0 0; padding:0; list-style:none;
+      display:grid; gap:10px;
+    }
+    .li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+    .tick{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(124,255,178,.12);
+      border:1px solid rgba(124,255,178,.30);
+      display:grid; place-items:center;
+      flex:0 0 18px;
+      margin-top:2px;
+    }
+
+    /* Tarifs tables */
+    .table{
+      width:100%;
+      border-collapse: separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
-      border-radius:22px;
-      padding:16px;
     }
-    .card h3{ margin:0 0 6px; font-size:14px; letter-spacing:.2px; }
-    .card p{ margin:0; color: var(--muted); line-height:1.65; font-size:13.7px; }
-
-    .aside{ display:grid; gap:12px; align-content:start; }
-    .panel{
-      border:1px solid rgba(214,179,106,.14);
-      background: rgba(0,0,0,.22);
-      border-radius:22px;
-      padding:16px;
+    .table th, .table td{
+      padding:14px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      font-size:14px;
+      text-align:left;
     }
-    .panel h2{ margin:0 0 10px; font-size:18px; letter-spacing:.2px; }
-    .panel p{ margin:0 0 8px; color: var(--muted); line-height:1.6; font-size:13.6px; }
-    .hr{height:1px; background:rgba(214,179,106,.16); margin:12px 0;}
-
-    .split{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    ul.list{ margin:10px 0 0; padding-left:16px; color: var(--muted); line-height:1.7; font-size:13.6px; }
-
-    .paywrap{ margin-top:14px; }
-    .paytitle{ font-size:13px; font-weight:950; letter-spacing:.2px; margin:0 0 8px; color:rgba(244,241,234,.82); }
-    .badges{ display:flex; flex-wrap:wrap; gap:8px; }
+    .table th{color:var(--muted2); font-weight:800; letter-spacing:.2px; background: rgba(255,255,255,.04)}
+    .table tr:last-child td{border-bottom:0}
+    .price{font-weight:900}
     .badge{
       display:inline-flex; align-items:center; gap:8px;
-      padding:9px 10px;
-      border-radius:999px;
-      border:1px solid rgba(214,179,106,.22);
-      background: rgba(255,255,255,.02);
-      color: rgba(244,241,234,.82);
-      font-size:12.5px;
-      font-weight:950;
-      letter-spacing:.15px;
-      line-height:1;
-    }
-    .ico{ width:16px; height:16px; display:inline-block; color: rgba(241,216,154,.95); flex:0 0 auto; }
-    .hint{ font-size:12.5px; color: var(--muted2); line-height:1.6; }
-
-    section.block{
-      margin-top:14px;
-      border:1px solid rgba(214,179,106,.12);
-      border-radius:24px;
-      background: rgba(255,255,255,.02);
-      padding:18px;
-    }
-    section.block h2{ margin:0 0 10px; font-size:20px; }
-    section.block p{ margin:0; color: var(--muted); line-height:1.7; }
-
-    .mapBox{
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
       margin-top:12px;
-      border:1px solid rgba(214,179,106,.14);
-      border-radius:22px;
-      overflow:hidden;
-      background: rgba(0,0,0,.25);
     }
-    .mapBox iframe{ width:100%; height:340px; border:0; display:block; }
 
-    .form{ display:grid; gap:10px; margin-top:10px; }
-    input, textarea, select{
+    /* Estimator / form */
+    .split{
+      display:grid; grid-template-columns: 1fr 1fr; gap:14px;
+      align-items:stretch;
+    }
+    .field{
+      display:flex; flex-direction:column; gap:8px;
+      margin-bottom:12px;
+    }
+    label{font-size:13px; color:var(--muted2); font-weight:800; letter-spacing:.2px}
+    input, select, textarea{
       width:100%;
       padding:12px 12px;
-      border-radius:16px;
-      border:1px solid rgba(214,179,106,.16);
-      background: rgba(0,0,0,.35);
-      color: var(--txt);
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color:var(--txt);
       outline:none;
+      transition: border-color .2s ease, background .2s ease;
     }
-    textarea{ min-height:110px; resize: vertical; }
-
-    footer{
-      margin-top:18px;
-      color: rgba(244,241,234,.68);
+    textarea{min-height:110px; resize:vertical}
+    input:focus, select:focus, textarea:focus{border-color: rgba(214,179,106,.40); background: rgba(0,0,0,.35)}
+    .hint{color:var(--muted2); font-size:12.5px; line-height:1.45}
+    .result{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:14px;
+      margin-top:10px;
+      display:grid;
+      gap:10px;
+    }
+    .result .row{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .k{color:var(--muted2); font-size:13px; font-weight:800}
+    .v{color:var(--txt); font-size:14px; font-weight:900}
+    .note{
+      color:var(--muted);
       font-size:13px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      border-top:1px solid rgba(214,179,106,.12);
-      padding-top:14px;
+      line-height:1.45;
+      border-left: 3px solid rgba(214,179,106,.35);
+      padding-left:12px;
     }
+    .alert{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding:12px 14px;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.45;
+    }
+    .alert strong{color:var(--txt)}
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .bad{color:var(--bad)}
 
-    .sticky{
-      position:fixed; left:0; right:0; bottom:0; z-index:40;
-      background: rgba(8,8,8,.82);
-      backdrop-filter: blur(12px);
-      border-top:1px solid rgba(214,179,106,.16);
+    /* Payments */
+    .payRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:12px;
+    }
+    .pay{
+      display:flex; align-items:center; gap:10px;
       padding:10px 12px;
-      display:none;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:13px;
     }
-    .sticky .inner{max-width:1160px; margin:0 auto; display:flex; gap:10px}
-    .sticky .inner .btn{flex:1}
+    .pay svg{width:22px; height:22px; opacity:.95}
+    .muted{color:var(--muted)}
+    .footer{
+      padding:30px 0 50px;
+      color:var(--muted2);
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:30px;
+    }
+    .footGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+    .small{font-size:12.5px; line-height:1.55}
+    .links{display:flex; gap:10px; flex-wrap:wrap}
+    .links a{padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04)}
+    .mapWrap{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      min-height: 420px;
+    }
+    #map{width:100%; height:420px}
+    .imgCard{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .imgCard img{width:100%; display:block}
 
-    @media (max-width: 980px){
-      h1{font-size:34px}
-      .heroInner{grid-template-columns: 1fr}
-      nav{display:none}
-      .grid3{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      .sticky{display:block}
-      .topbar{position:relative}
+    /* Reveal animations */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.in{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr}
+      .mini{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .split{grid-template-columns: 1fr}
+      .nav{display:none}
+      .burger{display:flex}
+      #map{height:380px}
     }
   </style>
 
-  <!-- Données structurées (aide Google à comprendre ton activité) -->
+  <!-- SEO / LocalBusiness schema -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"TaxiService",
-    "name":"Taxi Paris Karim",
-    "areaServed":["Paris","Île-de-France"],
-    "telephone":"+33781615418",
-    "url":"https://rimk10.github.io/taxi-paris-karim/",
-    "serviceType":[
-      "Taxi Paris",
-      "Taxi Paris CDG",
-      "Taxi Paris Orly",
-      "Taxi Beauvais Paris",
-      "Taxi gares parisiennes"
-    ]
+    "@context": "https://schema.org",
+    "@type": "TaxiService",
+    "name": "Taxi Paris Karim",
+    "areaServed": [
+      "Paris", "Île-de-France", "Versailles", "Val-d’Oise", "Seine-Saint-Denis", "Val-de-Marne", "Hauts-de-Seine",
+      "Aéroport Paris-Charles de Gaulle (CDG)", "Aéroport de Paris-Orly (ORY)", "Parc des Expositions de Villepinte"
+    ],
+    "serviceType": ["Taxi", "Transfert aéroport", "Longue distance", "Réservation"],
+    "url": "https://rimk10.github.io/taxi-paris-karim/",
+    "paymentAccepted": ["Cash", "Credit Card", "Apple Pay", "Google Pay", "PayPal"],
+    "slogan": "Service premium, discret et ponctuel"
   }
   </script>
 </head>
 
 <body>
-<div class="wrap">
-  <div class="topbar">
-    <header>
-      <a class="brand" href="#top">
-        <span class="mark" aria-hidden="true"></span>
-        <span class="name">
-          <span>Taxi Paris Karim</span>
-          <small data-i18n="sub">Taxi officiel · Agréé G7</small>
-        </span>
-      </a>
-
-      <nav>
-        <a href="#services" data-i18n="nav_services">Services</a>
-        <a href="#cdg" data-i18n="nav_cdg">CDG</a>
-        <a href="#orly" data-i18n="nav_orly">Orly</a>
-        <a href="#beauvais" data-i18n="nav_beauvais">Beauvais</a>
-        <a href="#gares" data-i18n="nav_gares">Gares</a>
-        <a href="#map" data-i18n="nav_map">Carte</a>
-        <a href="#tarifs" data-i18n="nav_tarifs">Tarification</a>
-        <a href="#contact" data-i18n="nav_contact">Réserver</a>
-      </nav>
-
-      <div class="lang" aria-label="Language switch">
-        <button type="button" data-lang="fr" onclick="setLang('fr')">🇫🇷 FR</button>
-        <button type="button" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button>
-        <button type="button" data-lang="es" onclick="setLang('es')">🇪🇸 ES</button>
+  <!-- Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="panel">
+      <div class="closeRow">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 12h10M8 7h8M6 17h12" stroke="rgba(247,246,242,.92)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-title">Taxi Paris Karim</div>
+            <div class="brand-sub" data-i18n="nav_sub">Menu</div>
+          </div>
+        </div>
+        <button class="x" id="closeDrawer" aria-label="Fermer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M6 6l12 12M18 6L6 18" stroke="rgba(247,246,242,.90)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
-    </header>
+
+      <a href="#services" onclick="closeDrawer()" data-i18n="nav_services">Services</a>
+      <a href="#tarifs" onclick="closeDrawer()" data-i18n="nav_tarifs">Tarification</a>
+      <a href="#estimation" onclick="closeDrawer()" data-i18n="nav_estimation">Estimation</a>
+      <a href="#carte" onclick="closeDrawer()" data-i18n="nav_map">Carte</a>
+      <a href="#reservation" onclick="closeDrawer()" data-i18n="nav_booking">Réservation</a>
+      <a href="#contact" onclick="closeDrawer()" data-i18n="nav_contact">Contact</a>
+
+      <div class="alert" style="margin-top:auto">
+        <strong data-i18n="drawer_tip_t">Astuce :</strong>
+        <span data-i18n="drawer_tip_b">tu peux tout gérer depuis iPhone (édition du fichier + commit).</span>
+      </div>
+    </div>
   </div>
 
-  <section class="hero reveal" id="top">
-    <div class="float-glow" aria-hidden="true"></div>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M3 15l2-7c.3-1.1 1.3-2 2.5-2h9c1.2 0 2.2.9 2.5 2l2 7" stroke="rgba(247,246,242,.92)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 15h10M7 18h10" stroke="rgba(241,216,154,.90)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-title">Taxi Paris Karim</div>
+            <div class="brand-sub" data-i18n="brand_sub">Service premium — Paris & Île-de-France</div>
+          </div>
+        </div>
 
-    <div class="heroInner">
-      <div class="reveal">
-        <div class="kicker"><span class="dot"></span> <span data-i18n="kicker">Disponibilité 24/7 · Réservation rapide</span></div>
+        <nav class="nav" aria-label="Navigation principale">
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#tarifs" data-i18n="nav_tarifs">Tarification</a>
+          <a href="#estimation" data-i18n="nav_estimation">Estimation</a>
+          <a href="#carte" data-i18n="nav_map">Carte</a>
+          <a href="#reservation" data-i18n="nav_booking">Réservation</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
+        </nav>
 
-        <h1 data-i18n="h1">Taxi Paris Karim</h1>
-        <p class="lead" data-i18n="lead">
-          Paris & Île-de-France. Aéroports (CDG, Orly, Beauvais), gares parisiennes et longue distance.
-          Service professionnel, ponctuel et clair.
+        <div class="right-actions">
+          <div class="lang" aria-label="Langues">
+            <button id="langFR" class="active" type="button">FR</button>
+            <button id="langEN" type="button">EN</button>
+            <button id="langAR" type="button">AR</button>
+          </div>
+
+          <button class="burger" id="openDrawer" aria-label="Ouvrir le menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M5 7h14M5 12h14M5 17h14" stroke="rgba(247,246,242,.92)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card reveal">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="hero-pad">
+            <span class="pill"><span class="dot"></span><span data-i18n="hero_pill">Ponctualité • Discrétion • Confort</span></span>
+            <h1 data-i18n="hero_h1">Taxi premium à Paris & Île-de-France — CDG, Orly, Villepinte, Versailles</h1>
+            <p class="lead" data-i18n="hero_lead">
+              Une prise en charge à l’heure convenue, sans retard. Chauffeur professionnel, discret et attentif.
+              Aide aux bagages et accompagnement si besoin. Paiements acceptés : espèces, CB, Apple Pay, Google Pay, PayPal.
+              <strong>Facture sur demande.</strong>
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn gold" href="#reservation">
+                <span data-i18n="hero_cta1">Réserver maintenant</span>
+                <span aria-hidden="true">→</span>
+              </a>
+              <a class="btn secondary" href="#estimation">
+                <span data-i18n="hero_cta2">Estimer un trajet</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a class="btn ghost" href="#tarifs">
+                <span data-i18n="hero_cta3">Voir la tarification</span>
+              </a>
+            </div>
+
+            <div class="mini">
+              <div class="chip">
+                <strong data-i18n="hero_chip1_t">Véhicule</strong><br>
+                <span data-i18n="hero_chip1_b">Toyota Corolla break — spacieux, grand coffre — jusqu’à 4 passagers.</span>
+              </div>
+              <div class="chip">
+                <strong data-i18n="hero_chip2_t">Zones</strong><br>
+                <span data-i18n="hero_chip2_b">Paris + zone taxi parisien + CDG/Orly/Villepinte (selon règles de tarification).</span>
+              </div>
+              <div class="chip">
+                <strong data-i18n="hero_chip3_t">Longue distance</strong><br>
+                <span data-i18n="hero_chip3_b">Orléans, Troyes… et plus : estimation indicative ou devis selon distance.</span>
+              </div>
+            </div>
+
+            <div class="payRow" aria-label="Paiements acceptés">
+              <div class="pay" title="CB / Cartes">
+                <!-- Card icon -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="6" width="18" height="12" rx="3" stroke="rgba(241,216,154,.9)" stroke-width="2"/>
+                  <path d="M3 10h18" stroke="rgba(247,246,242,.85)" stroke-width="2"/>
+                  <path d="M7 15h5" stroke="rgba(247,246,242,.85)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span data-i18n="pay_cards">CB • Toutes cartes</span>
+              </div>
+              <div class="pay" title="Apple Pay">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M10.5 7.2c.7-.9 1.8-1.6 2.9-1.6.1 1-.3 2-.9 2.7-.7.8-1.8 1.5-2.9 1.4-.2-1 .3-1.9.9-2.5Z" fill="rgba(247,246,242,.9)"/>
+                  <path d="M12.2 9.6c1.3 0 2.1.7 2.8.7.7 0 1.8-.8 3-.8.5 0 2 .1 3 1.5-.1.1-1.8 1-1.8 3 0 2.3 2 3.1 2 3.1-.1.1-.3 1-1 2-.6.9-1.3 1.8-2.3 1.8-1 0-1.3-.6-2.5-.6s-1.6.6-2.6.6c-1 0-1.8-1-2.4-1.9-1.3-2-2.3-5.7-.9-8.2.7-1.2 2-2 3.3-2Z" fill="rgba(241,216,154,.75)"/>
+                </svg>
+                <span>Apple Pay</span>
+              </div>
+              <div class="pay" title="Google Pay">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 12h9c0 5-3.4 9-9 9a9 9 0 1 1 0-18c2.4 0 4.4.9 6 2.4l-2.6 2.6A5.7 5.7 0 0 0 12 7.2c-2.7 0-4.8 2.2-4.8 4.8S9.3 16.8 12 16.8c2.2 0 3.8-1.2 4.3-2.8H12V12Z" fill="rgba(107,188,255,.8)"/>
+                  <path d="M21 12h-9v2h4.3c-.4 1.3-1.7 2.8-4.3 2.8-2.7 0-4.8-2.2-4.8-4.8S9.3 7.2 12 7.2c1.5 0 2.6.6 3.4 1.4L18 6c-1.6-1.5-3.6-2.4-6-2.4a9 9 0 1 0 0 18c5.6 0 9-4 9-9Z" fill="rgba(241,216,154,.55)"/>
+                </svg>
+                <span>Google Pay</span>
+              </div>
+              <div class="pay" title="PayPal">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 20h2.2c1.1 0 2-.8 2.2-1.9l.3-1.6h1.6c3 0 5.4-1.9 6-4.8.7-3.4-1.4-5.7-4.7-5.7H9.7c-.9 0-1.7.7-1.9 1.6L6 20h3Z" fill="rgba(107,188,255,.35)"/>
+                  <path d="M10 18h2.1c.9 0 1.7-.6 1.9-1.5l.3-1.6h1.6c2.8 0 5-1.8 5.6-4.4.2-.9.2-1.7 0-2.4-.7 3-3.1 4.8-6 4.8h-1.6l-.3 1.6c-.2 1.1-1.1 1.9-2.2 1.9H9.1l.9-4.8L10 18Z" fill="rgba(241,216,154,.65)"/>
+                </svg>
+                <span>PayPal</span>
+              </div>
+            </div>
+
+            <div class="badge" data-i18n="hero_badge">
+              Paris intra-muros = Paris “à l’intérieur du périphérique” (les 20 arrondissements).
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-photo reveal">
+          <div class="img" aria-hidden="true"></div>
+          <div class="overlay">
+            <div class="statRow">
+              <div class="stat">
+                <div class="k" data-i18n="stat1_k">Transferts</div>
+                <div class="v">CDG • Orly • Villepinte</div>
+              </div>
+              <div class="stat">
+                <div class="k" data-i18n="stat2_k">Service</div>
+                <div class="v" data-i18n="stat2_v">Premium & discret</div>
+              </div>
+              <div class="stat">
+                <div class="k" data-i18n="stat3_k">Option</div>
+                <div class="v" data-i18n="stat3_v">Journée sur devis</div>
+              </div>
+            </div>
+
+            <a class="btn small" href="#reservation">
+              <span data-i18n="photo_cta">Demander une prise en charge</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2 class="reveal" data-i18n="services_h2">Services haut de gamme</h2>
+          <p class="section-sub reveal" data-i18n="services_p">
+            Une expérience simple : réservation claire, conduite souple, et une communication efficace.
+            Pour tout besoin spécifique (famille, bagages, horaires serrés), indique-le dans le message.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <h3 data-i18n="s1_t">Ponctualité & confort</h3>
+          <p data-i18n="s1_p">Prise en charge à l’heure convenue, sans retard. Conduite souple, discrétion et attention.</p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span data-i18n="s1_l1">Chauffeur professionnel, discret et attentif</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="s1_l2">Aide aux bagages et accompagnement si besoin</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="s1_l3">Facture sur demande</span></li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3 data-i18n="s2_t">Aéroports & gares</h3>
+          <p data-i18n="s2_p">CDG / Orly / Villepinte : transferts réguliers, anticipation des horaires, sérénité.</p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span data-i18n="s2_l1">CDG ↔ Paris • Orly ↔ Paris</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="s2_l2">CDG ↔ Orly (correspondances)</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="s2_l3">Villepinte (Parc des Expositions)</span></li>
+          </ul>
+        </div>
+
+        <div class="card reveal">
+          <h3 data-i18n="s3_t">Longue distance</h3>
+          <p data-i18n="s3_p">Orléans, Troyes… et au-delà. Estimation indicative ou devis selon la distance et le temps.</p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span data-i18n="s3_l1">Réservation à la journée : sur devis</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="s3_l2">Paiement CB / sans contact</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="s3_l3">Message rapide via le formulaire</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section id="tarifs">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2 class="reveal" data-i18n="tarifs_h2">Tarification expliquée aux clients</h2>
+          <p class="section-sub reveal" data-i18n="tarifs_p">
+            Dans la zone du taxi parisien (Paris + zone bleue + CDG/Orly/Villepinte), des règles spécifiques s’appliquent.
+            En dehors, la course est au taximètre et peut inclure un compteur d’approche (selon distance et circulation).
+          </p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="card reveal">
+          <h3 data-i18n="tarifs_bloc1_t">Réservation</h3>
+          <table class="table" role="table" aria-label="Réservation">
+            <thead>
+              <tr>
+                <th data-i18n="tarifs_th1">Type</th>
+                <th data-i18n="tarifs_th2">Montant</th>
+                <th data-i18n="tarifs_th3">Condition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="t_res_immed">Réservation immédiate</td>
+                <td class="price">4€</td>
+                <td data-i18n="t_res_immed_c">Commande et prise en charge dans ~15 min</td>
+              </tr>
+              <tr>
+                <td data-i18n="t_res_adv">Réservation à l’avance</td>
+                <td class="price">7€</td>
+                <td data-i18n="t_res_adv_c">Ex : aujourd’hui pour demain</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="badge" data-i18n="tarifs_note_zone">
+            Important : 4€ / 7€ s’applique uniquement dans la zone du taxi parisien.
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3 data-i18n="tarifs_bloc2_t">Forfaits aéroports (Paris intra-muros)</h3>
+          <table class="table" role="table" aria-label="Forfaits aéroports">
+            <thead>
+              <tr>
+                <th data-i18n="t_forfait_trajet">Trajet</th>
+                <th data-i18n="t_forfait_prix">Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="t_cdg_rd">CDG ↔ Paris rive droite</td>
+                <td class="price">56€</td>
+              </tr>
+              <tr>
+                <td data-i18n="t_cdg_rg">CDG ↔ Paris rive gauche</td>
+                <td class="price">65€</td>
+              </tr>
+              <tr>
+                <td data-i18n="t_orly_rd">Orly ↔ Paris rive droite</td>
+                <td class="price">45€</td>
+              </tr>
+              <tr>
+                <td data-i18n="t_orly_rg">Orly ↔ Paris rive gauche</td>
+                <td class="price">36€</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="badge" data-i18n="tarifs_note_traffic">
+            Les montants affichés concernent les règles de forfait. La circulation peut impacter le temps, pas le forfait.
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:14px">
+        <h3 data-i18n="tarifs_out_t">Hors zone taxi parisien : taximètre + compteur d’approche (si applicable)</h3>
+        <p class="muted" data-i18n="tarifs_out_p">
+          Hors zone, le tarif d’approche dépend de la localisation du taxi au moment de la demande et de la distance jusqu’à l’adresse.
+          Plus le taxi est éloigné, plus le compteur d’approche peut être élevé. Les estimations sont indicatives et dépendent notamment des embouteillages.
         </p>
 
-        <div class="cta">
-          <a class="btn primary" href="tel:+33781615418" data-i18n="call">📞 Appeler</a>
-          <a class="btn" href="https://wa.me/33781615418?text=Bonjour%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" rel="noopener" data-i18n="wa">💬 WhatsApp</a>
-          <a class="btn" href="#contact" data-i18n="book">🗓️ Réserver</a>
+        <div class="alert" style="margin-top:12px">
+          <strong data-i18n="tarifs_out_ex_t">Exemple (indicatif) :</strong>
+          <span data-i18n="tarifs_out_ex_b">Beauvais → Paris (ou CDG/Orly) : un compteur d’approche peut être estimé entre 100€ et 120€ selon la situation.</span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="paywrap reveal">
-          <p class="paytitle" data-i18n="pay_title">Paiements acceptés</p>
-          <div class="badges" aria-label="Accepted payments">
-            <span class="badge">
-              <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 7.5h18M5 10.5h14M6.5 16h4M3.5 18.5h17a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-17a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-              <span data-i18n="pay_cards">CB & toutes cartes</span>
+  <!-- ESTIMATION -->
+  <section id="estimation">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2 class="reveal" data-i18n="est_h2">Estimation (fourchette) — distance & temps</h2>
+          <p class="section-sub reveal" data-i18n="est_p">
+            Cette estimation est indicative : elle se base sur la distance et le temps (Google). Le prix final dépend de la circulation, des conditions réelles et des règles applicables (zone taxi parisien / hors zone).
+          </p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="card reveal">
+          <h3 data-i18n="est_form_t">Calculer un trajet</h3>
+
+          <div class="field">
+            <label for="pickup" data-i18n="f_pickup">Adresse de prise en charge</label>
+            <input id="pickup" placeholder="Ex : 8 Rue de Rivoli, Paris" autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="dropoff" data-i18n="f_dropoff">Destination</label>
+            <input id="dropoff" placeholder="Ex : Aéroport CDG" autocomplete="off" />
+          </div>
+
+          <div class="split">
+            <div class="field">
+              <label for="when" data-i18n="f_when">Date & heure</label>
+              <input id="when" type="datetime-local" />
+              <div class="hint" data-i18n="f_when_hint">Pour la réservation immédiate : prise en charge ~15 min.</div>
+            </div>
+            <div class="field">
+              <label for="pax" data-i18n="f_pax">Passagers</label>
+              <select id="pax">
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+              </select>
+              <div class="hint" data-i18n="f_pax_hint">Véhicule jusqu’à 4 passagers.</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
+            <button class="btn gold" id="btnEstimate" type="button">
+              <span data-i18n="btn_est">Estimer</span> <span aria-hidden="true">↗</span>
+            </button>
+            <button class="btn secondary" id="btnLocate" type="button">
+              <span data-i18n="btn_loc">Utiliser ma position</span>
+            </button>
+            <button class="btn ghost" id="btnClear" type="button">
+              <span data-i18n="btn_clear">Effacer</span>
+            </button>
+          </div>
+
+          <div class="result" id="result" style="display:none">
+            <div class="row">
+              <div>
+                <div class="k" data-i18n="r_distance">Distance</div>
+                <div class="v" id="rDistance">—</div>
+              </div>
+              <div>
+                <div class="k" data-i18n="r_time">Temps estimé</div>
+                <div class="v" id="rTime">—</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <div class="k" data-i18n="r_zone">Règle appliquée</div>
+                <div class="v" id="rRule">—</div>
+              </div>
+              <div>
+                <div class="k" data-i18n="r_bookingfee">Frais de réservation</div>
+                <div class="v" id="rBookFee">—</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <div class="k" data-i18n="r_price">Estimation (fourchette)</div>
+                <div class="v" id="rPrice">—</div>
+              </div>
+              <div>
+                <div class="k" data-i18n="r_action">Action</div>
+                <div class="v" id="rAction">—</div>
+              </div>
+            </div>
+
+            <div class="note" id="rNote">—</div>
+          </div>
+
+          <div class="alert" style="margin-top:12px">
+            <strong data-i18n="est_rules_t">Rappels :</strong>
+            <span data-i18n="est_rules_b">
+              4€ (immédiat) ou 7€ (à l’avance) uniquement dans la zone taxi parisien. Hors zone : taximètre + possible compteur d’approche.
+              Au-delà de 80 km : devis recommandé.
             </span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 3c2.8 0 5 2.2 5 5 0 3.7-5 13-5 13S7 11.7 7 8c0-2.8 2.2-5 5-5Z" stroke="currentColor" stroke-width="1.7"/></svg>Apple Pay</span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M20 8.5c-1.2-2.3-3.8-4-6.6-4-3.4 0-6.1 2-7.4 5.1-1.2 3 0 6.5 3 8.3 1.2.7 2.5 1.1 3.9 1.1 2.7 0 5.1-1.3 6.5-3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>PayPal</span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M12 3v18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 6.5h7a3 3 0 1 1 0 6H8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="pay_cash">Espèces</span></span>
-            <span class="badge"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M7 12c0-3 2-5 5-5 2.2 0 4 1.2 4.7 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 12c0-1.9 1.1-3.2 3-3.2 1.4 0 2.5.7 2.9 1.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span data-i18n="pay_contactless">Sans contact</span></span>
-            <span class="badge"><span data-i18n="invoice">🧾 Facture sur demande</span></span>
           </div>
-          <p class="hint" data-i18n="pay_note" style="margin-top:8px">Paiement simple et sécurisé à bord.</p>
         </div>
 
-        <div class="grid3 reveal" id="services">
-          <div class="card">
-            <h3>✈️ <span data-i18n="srv_air_t">Aéroports</span></h3>
-            <p data-i18n="srv_air_p">CDG · Orly · Beauvais : départs, arrivées, prise en charge aux terminaux.</p>
+        <div class="card reveal">
+          <h3 data-i18n="est_map_t">Carte (zone + localisation)</h3>
+          <p class="muted" data-i18n="est_map_p">
+            La carte affiche votre position (si autorisée), et une zone indicative. Pour une précision totale, la décision finale dépend des règles en vigueur et des communes exactes.
+          </p>
+
+          <div class="mapWrap" aria-label="Carte Google">
+            <div id="map"></div>
           </div>
-          <div class="card">
-            <h3>🚆 <span data-i18n="srv_sta_t">Gares</span></h3>
-            <p data-i18n="srv_sta_p">Gare du Nord, Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.</p>
+
+          <div class="badge" data-i18n="map_badge">
+            Astuce : si la carte est vide, vérifie la clé API (restriction “Sites Web” + APIs activées).
           </div>
-          <div class="card">
-            <h3>🛣️ <span data-i18n="srv_long_t">Longue distance</span></h3>
-            <p data-i18n="srv_long_p">Trajets sur demande : Lille, Bruxelles, Reims, Rouen, Amiens…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE + VISUEL ZONE -->
+  <section id="carte">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2 class="reveal" data-i18n="zone_h2">Zone taxi parisien</h2>
+          <p class="section-sub reveal" data-i18n="zone_p">
+            Dans cette zone, les règles de réservation (4€ / 7€) s’appliquent. En dehors : taximètre + éventuel compteur d’approche selon distance et circulation.
+          </p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="imgCard reveal">
+          <!-- IMPORTANT : mets l’image dans ton repo dans /assets/zone-taxi-parisien.png -->
+          <img src="assets/zone-taxi-parisien.png" alt="Carte zone taxi parisien (Paris en rouge, zone en bleu)" />
+        </div>
+
+        <div class="card reveal">
+          <h3 data-i18n="zone_info_t">Information clients</h3>
+          <p class="muted" data-i18n="zone_info_p">
+            La tarification varie selon la zone et l’itinéraire. L’estimation ci-dessus est indicative (distance + temps).
+            Les embouteillages, travaux et conditions réelles peuvent modifier le temps et parfois l’approche hors zone.
+          </p>
+          <ul class="list">
+            <li class="li"><span class="tick">✓</span><span data-i18n="zone_l1">Paris (intra-muros) est en rouge</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="zone_l2">La zone taxi parisien est en bleu</span></li>
+            <li class="li"><span class="tick">✓</span><span data-i18n="zone_l3">CDG / Orly / Villepinte sont inclus pour l’estimation</span></li>
+          </ul>
+          <div class="badge" data-i18n="zone_note">
+            Si votre prise en charge est hors zone, un devis peut être proposé.
           </div>
         </div>
       </div>
 
-      <aside class="aside">
-        <div class="panel reveal">
-          <h2 data-i18n="g7_t">Réseau G7</h2>
-          <div id="g7Lines"></div>
-        </div>
+      <div class="imgCard reveal" style="margin-top:14px">
+        <!-- IMPORTANT : mets l’image “barème” dans /assets/bareme-approche.png -->
+        <img src="assets/bareme-approche.png" alt="Barème estimatif des compteurs d’approche (exemple)" />
+      </div>
+    </div>
+  </section>
 
-        <div class="panel reveal">
-          <h2 data-i18n="tarifs_t">Tarification expliquée aux clients</h2>
-          <p class="hint" data-i18n="tarifs_intro">
-            Dans la zone des taxis parisiens, des forfaits aéroports réglementés s’appliquent.
-            En dehors de cette zone, la course est au taximètre (tarif réglementé).
+  <!-- RESERVATION -->
+  <section id="reservation">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2 class="reveal" data-i18n="book_h2">Réservation</h2>
+          <p class="section-sub reveal" data-i18n="book_p">
+            Remplis le formulaire : nom, prénom, contact, adresses, date/heure et message. Je te confirme rapidement.
+            Pour une réservation à la journée : sélectionne “Journée (devis)”.
           </p>
+        </div>
+      </div>
 
-          <div class="hr"></div>
+      <div class="split">
+        <div class="card reveal">
+          <h3 data-i18n="book_form_t">Formulaire</h3>
 
           <div class="split">
-            <div class="card">
-              <h3 data-i18n="resa_t">Réservation</h3>
-              <ul class="list">
-                <li data-i18n="resa_now">Réservation immédiate : 4 €</li>
-                <li data-i18n="resa_adv">Réservation à l’avance : 7 €</li>
-              </ul>
+            <div class="field">
+              <label for="lname" data-i18n="f_lname">Nom</label>
+              <input id="lname" placeholder="Nom" />
             </div>
-            <div class="card">
-              <h3 data-i18n="forfaits_t">Forfaits aéroports</h3>
-              <ul class="list">
-                <li data-i18n="cdg_rd">CDG ↔ Paris Rive Droite : 56 €</li>
-                <li data-i18n="cdg_rg">CDG ↔ Paris Rive Gauche : 65 €</li>
-                <li data-i18n="orly_rd">Orly ↔ Paris Rive Droite : 45 €</li>
-                <li data-i18n="orly_rg">Orly ↔ Paris Rive Gauche : 36 €</li>
-              </ul>
+            <div class="field">
+              <label for="fname" data-i18n="f_fname">Prénom</label>
+              <input id="fname" placeholder="Prénom" />
             </div>
           </div>
 
-          <div class="card" style="margin-top:12px">
-            <h3 data-i18n="banks_t">Rive Droite / Rive Gauche (Paris)</h3>
-            <p class="hint" data-i18n="rd_list"></p>
-            <p class="hint" data-i18n="rg_list" style="margin-top:6px"></p>
+          <div class="split">
+            <div class="field">
+              <label for="phone" data-i18n="f_phone">Téléphone</label>
+              <input id="phone" placeholder="+33 ..." />
+            </div>
+            <div class="field">
+              <label for="email" data-i18n="f_email">Email (optionnel)</label>
+              <input id="email" placeholder="email@exemple.com" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="b_pickup" data-i18n="f_pickup">Adresse de prise en charge</label>
+            <input id="b_pickup" placeholder="Adresse complète" autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="b_dropoff" data-i18n="f_dropoff">Destination</label>
+            <input id="b_dropoff" placeholder="Destination" autocomplete="off" />
+          </div>
+
+          <div class="split">
+            <div class="field">
+              <label for="b_when" data-i18n="f_when">Date & heure</label>
+              <input id="b_when" type="datetime-local" />
+            </div>
+            <div class="field">
+              <label for="b_type" data-i18n="f_type">Type</label>
+              <select id="b_type">
+                <option value="course" data-i18n="type_course">Course</option>
+                <option value="day" data-i18n="type_day">Journée (devis)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="field">
+              <label for="b_pax" data-i18n="f_pax">Passagers</label>
+              <select id="b_pax">
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="b_bags" data-i18n="f_bags">Bagages</label>
+              <select id="b_bags">
+                <option value="0" data-i18n="bags_0">0</option>
+                <option value="1" data-i18n="bags_1">1–2</option>
+                <option value="2" data-i18n="bags_2">3–4</option>
+                <option value="3" data-i18n="bags_3">+4</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="msg" data-i18n="f_msg">Message</label>
+            <textarea id="msg" placeholder="Ex : vol AF123, besoin d’aide bagages, siège enfant, etc."></textarea>
+            <div class="hint" data-i18n="f_msg_hint">Plus c’est précis, plus je confirme vite.</div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn gold" id="btnSend" type="button">
+              <span data-i18n="btn_send">Envoyer la demande</span> <span aria-hidden="true">→</span>
+            </button>
+            <a class="btn secondary" id="btnWhatsApp" href="#" target="_blank" rel="noopener">
+              <span>WhatsApp</span> <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="badge" data-i18n="book_badge">
+            Paiements : espèces, CB toutes cartes, Apple Pay, Google Pay, PayPal — Facture sur demande.
           </div>
         </div>
-      </aside>
+
+        <div class="card reveal" id="contact">
+          <h3 data-i18n="contact_t">Contact</h3>
+          <p class="muted" data-i18n="contact_p">
+            Mets ici ton numéro et ton email (modifiables dans le code). Ajoute aussi ton lien Google Business quand il est prêt.
+          </p>
+
+          <div class="alert" style="margin-top:10px">
+            <strong data-i18n="contact_phone_t">Téléphone :</strong> <span id="displayPhone" class="ok">à renseigner</span><br>
+            <strong data-i18n="contact_email_t">Email :</strong> <span id="displayEmail" class="ok">à renseigner</span><br>
+            <strong data-i18n="contact_gmb_t">Google My Business :</strong> <span class="ok" id="displayGMB">à renseigner</span>
+          </div>
+
+          <div class="imgCard" style="margin-top:12px">
+            <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1600&q=70" alt="Paris de nuit" />
+          </div>
+
+          <div class="badge" data-i18n="contact_note">
+            Les estimations sont indicatives et dépendent notamment de la circulation.
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SEO sections (mots clés naturels) -->
-  <section class="block reveal" id="cdg">
-    <h2 data-i18n="cdg_t">Taxi Paris ⇄ Aéroport Charles-de-Gaulle (CDG)</h2>
-    <p data-i18n="cdg_p">Transferts entre Paris et CDG. Prise en charge aux terminaux, départs et arrivées, 24/7.</p>
-    <p class="hint" data-i18n="seo_cdg">
-      Recherche fréquente : <strong>Taxi Paris CDG</strong> / <strong>Taxi CDG Paris</strong>. Réservation simple par téléphone ou WhatsApp.
-    </p>
-  </section>
-
-  <section class="block reveal" id="orly">
-    <h2 data-i18n="orly_t">Taxi Paris ⇄ Aéroport d’Orly</h2>
-    <p data-i18n="orly_p">Transferts entre Paris et Orly. Prise en charge aux terminaux, départs et arrivées, 24/7.</p>
-    <p class="hint" data-i18n="seo_orly">
-      Recherche fréquente : <strong>Taxi Paris Orly</strong> / <strong>Taxi Orly Paris</strong>. Service ponctuel, tarifs réglementés.
-    </p>
-  </section>
-
-  <section class="block reveal" id="beauvais">
-    <h2 data-i18n="beauvais_t">Taxi Beauvais ⇄ Paris</h2>
-    <p data-i18n="beauvais_p">Trajet longue distance entre Paris et l’aéroport de Beauvais-Tillé. Réservation simple, service ponctuel.</p>
-  </section>
-
-  <section class="block reveal" id="gares">
-    <h2 data-i18n="gares_t">Taxi Gares parisiennes</h2>
-    <p data-i18n="gares_p">Transferts vers/depuis : Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.</p>
-  </section>
-
-  <!-- Google Maps -->
-  <section class="block reveal" id="map">
-    <h2 data-i18n="map_t">Carte & zone d’intervention</h2>
-    <p class="hint" data-i18n="map_p">
-      Paris & Île-de-France. Pour un itinéraire, ouvrez Google Maps et envoyez votre adresse.
-    </p>
-
-    <div class="mapBox">
-      <!-- Carte centrée sur Paris (sans adresse privée) -->
-      <iframe
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Paris&output=embed"
-        title="Carte Google Maps - Paris">
-      </iframe>
-    </div>
-
-    <div class="cta" style="margin-top:12px">
-      <a class="btn" href="https://www.google.com/maps?q=Paris" target="_blank" rel="noopener" data-i18n="map_open">🗺️ Ouvrir dans Google Maps</a>
-      <a class="btn" href="https://wa.me/33781615418?text=Bonjour%20je%20souhaite%20un%20itin%C3%A9raire%20depuis%20(mon%20adresse)%20vers%20(ma%20destination)" target="_blank" rel="noopener" data-i18n="map_send">📍 Envoyer mon adresse sur WhatsApp</a>
-    </div>
-  </section>
-<section class="block reveal" id="seo">
-  <h2>Taxi Paris & Île-de-France</h2>
-
-  <p>
-    Taxi Paris Karim est un chauffeur de taxi parisien agréé G7, assurant des trajets fiables
-    et réglementés à Paris et en Île-de-France. Je propose des transferts vers les aéroports
-    de Paris Charles-de-Gaulle, Orly et Beauvais, ainsi que les principales gares parisiennes.
-  </p>
-
-  <p>
-    J’interviens régulièrement dans des secteurs comme Paris 8e, Paris 16e,
-    Neuilly-sur-Seine, Boulogne-Billancourt, Vincennes et Versailles.
-    Les forfaits aéroports réglementés s’appliquent dans la zone des taxis parisiens.
-    En dehors de cette zone, la course est effectuée au taximètre.
-  </p>
-
-  <p>
-    Taxi Paris Karim propose un service professionnel, ponctuel et transparent,
-    avec paiement CB, sans contact, Apple Pay, PayPal et espèces.
-    <strong>Facture sur demande.</strong>
-  </p>
-</section>
-  <section class="block reveal" id="tarifs">
-    <h2 data-i18n="tarifs_t">Tarification expliquée aux clients</h2>
-    <p class="hint" data-i18n="tarifs_intro"></p>
-  </section>
-
-  <section class="block reveal" id="contact">
-    <h2 data-i18n="contact_t">Réserver / demander une estimation</h2>
-    <p class="hint" data-i18n="contact_hint">Réponse rapide par téléphone ou WhatsApp.</p>
-
-    <div class="cta">
-      <a class="btn primary" href="tel:+33781615418" data-i18n="call">📞 Appeler</a>
-      <a class="btn" href="https://wa.me/33781615418?text=Bonjour%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" rel="noopener" data-i18n="wa">💬 WhatsApp</a>
-    </div>
-
-    <form class="form" onsubmit="event.preventDefault(); makeMsg();">
-      <select id="type" required>
-        <option value="" selected data-i18n="type0">Type de trajet…</option>
-        <option data-i18n="type1">Aéroport (CDG/Orly/Beauvais)</option>
-        <option data-i18n="type2">Gare</option>
-        <option data-i18n="type3">Paris / Île-de-France</option>
-        <option data-i18n="type4">Longue distance</option>
-      </select>
-      <input id="date" type="date" required />
-      <input id="time" type="time" required />
-      <input id="pickup" placeholder="Adresse de prise en charge" required />
-      <input id="drop" placeholder="Destination" required />
-      <textarea id="note" placeholder="Infos utiles (vol/train, nb passagers, bagages…)"></textarea>
-      <button class="btn primary" type="submit" data-i18n="prep">Préparer le message</button>
-      <div class="hint" id="out"></div>
-    </form>
-
-    <div class="cta" style="margin-top:10px">
-      <a class="btn" href="#" onclick="event.preventDefault(); copyMsg();" data-i18n="copy">📋 Copier</a>
-      <a class="btn" id="waBtn" href="https://wa.me/33781615418" target="_blank" rel="noopener" data-i18n="send">💬 Envoyer via WhatsApp</a>
+  <!-- SEO TEXT (visible mais sobre) -->
+  <section id="seo">
+    <div class="container">
+      <div class="card reveal">
+        <h2 data-i18n="seo_h2">Taxi Paris & Île-de-France</h2>
+        <p class="muted" data-i18n="seo_p1">
+          Taxi Paris Karim propose des trajets professionnels et réglementés à Paris et en Île-de-France : transferts CDG, Orly, Villepinte, Versailles, et correspondances CDG ↔ Orly.
+          Pour Beauvais : Paris → Beauvais, Orly → Beauvais, CDG → Beauvais (estimation indicative), et Beauvais → Paris (compteur d’approche indicatif selon disponibilité).
+        </p>
+        <p class="muted" data-i18n="seo_p2">
+          Les longues distances (Orléans, Troyes…) peuvent être estimées selon distance et temps, mais un devis est recommandé au-delà de 80 km.
+          Hors zone taxi parisien, la course est au taximètre et peut inclure un compteur d’approche.
+        </p>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <div>© <span id="y"></span> Taxi Paris Karim · +33 7 81 61 54 18</div>
-    <div data-i18n="legal">Mentions légales · Politique de confidentialité</div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footGrid">
+        <div class="small">
+          <strong>Taxi Paris Karim</strong><br>
+          <span data-i18n="foot1">Service premium — Paris & Île-de-France • CDG • Orly • Villepinte • Versailles</span><br><br>
+          <span data-i18n="foot2">© <span id="year"></span> — Tous droits réservés.</span>
+        </div>
+        <div class="links">
+          <a href="#reservation" data-i18n="foot_link1">Réservation</a>
+          <a href="#tarifs" data-i18n="foot_link2">Tarifs</a>
+          <a href="#estimation" data-i18n="foot_link3">Estimation</a>
+          <a href="#carte" data-i18n="foot_link4">Zone</a>
+        </div>
+      </div>
+    </div>
   </footer>
-</div>
 
-<div class="sticky">
-  <div class="inner">
-    <a class="btn primary" href="tel:+33781615418" data-i18n="call">📞 Appeler</a>
-    <a class="btn" href="https://wa.me/33781615418?text=Bonjour%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" rel="noopener" data-i18n="wa">💬 WhatsApp</a>
-  </div>
-</div>
+  <script>
+    // ----------------------------
+    // CONFIG (à personnaliser)
+    // ----------------------------
+    const CONFIG = {
+      phoneE164: "+33600000000",            // <-- Mets TON numéro ici (format +33...)
+      email: "contact@exemple.com",         // <-- Mets TON email ici
+      gmbUrl: "https://g.page/r/XXXXX",      // <-- Mets ton lien Google Business ici
 
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
+      // Estimation : règles
+      bookingImmediateMinutes: 15,
+      bookingFeeImmediate: 4,
+      bookingFeeAdvance: 7,
 
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add("is-in");
-    });
-  }, {threshold: 0.12});
-  document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+      // Vémars (95470) : estimation possible dans un rayon de 15 km (logique interne, pas affiché)
+      vemarsLat: 49.0696,
+      vemarsLng: 2.5677,
+      vemarsRadiusKm: 15,
 
-  const T = {
-    fr:{
-      sub:"Taxi officiel · Agréé G7",
-      nav_services:"Services", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Gares", nav_map:"Carte", nav_tarifs:"Tarification", nav_contact:"Réserver",
-      kicker:"Disponibilité 24/7 · Réservation rapide",
-      h1:"Taxi Paris Karim",
-      lead:"Paris & Île-de-France. Aéroports (CDG, Orly, Beauvais), gares parisiennes et longue distance. Service professionnel, ponctuel et clair.",
-      call:"📞 Appeler", wa:"💬 WhatsApp", book:"🗓️ Réserver",
-      pay_title:"Paiements acceptés",
-      pay_cards:"CB & toutes cartes",
-      pay_contactless:"Sans contact",
-      pay_cash:"Espèces",
-      pay_note:"Paiement simple et sécurisé à bord.",
-      invoice:"🧾 Facture sur demande",
-      srv_air_t:"Aéroports", srv_air_p:"CDG · Orly · Beauvais : départs, arrivées, prise en charge aux terminaux.",
-      srv_sta_t:"Gares", srv_sta_p:"Gare du Nord, Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
-      srv_long_t:"Longue distance", srv_long_p:"Trajets sur demande : Lille, Bruxelles, Reims, Rouen, Amiens…",
-      g7_t:"Réseau G7",
-      g7:[
-        "G7 est le leader de la mise en relation taxi à Paris.",
-        "Le réseau regroupe des taxis officiels sélectionnés pour leur sérieux.",
-        "Être chauffeur agréé G7 garantit un service fiable et encadré.",
-        "G7 est une référence reconnue par particuliers et professionnels.",
-        "Taxi Paris Karim est agréé G7."
-      ],
-      tarifs_t:"Tarification expliquée aux clients",
-      tarifs_intro:"Dans la zone des taxis parisiens, des forfaits aéroports réglementés s’appliquent. En dehors de cette zone, la course est au taximètre (tarif réglementé).",
-      resa_t:"Réservation",
-      resa_now:"Réservation immédiate : 4 €",
-      resa_adv:"Réservation à l’avance : 7 €",
-      forfaits_t:"Forfaits aéroports",
-      cdg_rd:"CDG ↔ Paris Rive Droite : 56 €",
-      cdg_rg:"CDG ↔ Paris Rive Gauche : 65 €",
-      orly_rd:"Orly ↔ Paris Rive Droite : 45 €",
-      orly_rg:"Orly ↔ Paris Rive Gauche : 36 €",
-      banks_t:"Rive Droite / Rive Gauche (Paris)",
-      rd_list:"Rive Droite : 1, 2, 3, 4, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20",
-      rg_list:"Rive Gauche : 5, 6, 7, 13, 14, 15",
-      cdg_t:"Taxi Paris ⇄ Aéroport Charles-de-Gaulle (CDG)", cdg_p:"Transferts entre Paris et CDG. Prise en charge aux terminaux, départs et arrivées, 24/7.",
-      seo_cdg:"Recherche fréquente : Taxi Paris CDG / Taxi CDG Paris. Réservation simple par téléphone ou WhatsApp.",
-      orly_t:"Taxi Paris ⇄ Aéroport d’Orly", orly_p:"Transferts entre Paris et Orly. Prise en charge aux terminaux, départs et arrivées, 24/7.",
-      seo_orly:"Recherche fréquente : Taxi Paris Orly / Taxi Orly Paris. Service ponctuel, tarifs réglementés.",
-      beauvais_t:"Taxi Beauvais ⇄ Paris", beauvais_p:"Trajet longue distance entre Paris et l’aéroport de Beauvais-Tillé. Réservation simple, service ponctuel.",
-      gares_t:"Taxi Gares parisiennes", gares_p:"Transferts vers/depuis : Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
-      map_t:"Carte & zone d’intervention",
-      map_p:"Paris & Île-de-France. Pour un itinéraire, ouvrez Google Maps et envoyez votre adresse.",
-      map_open:"🗺️ Ouvrir dans Google Maps",
-      map_send:"📍 Envoyer mon adresse sur WhatsApp",
-      contact_t:"Réserver / demander une estimation", contact_hint:"Réponse rapide par téléphone ou WhatsApp.",
-      type0:"Type de trajet…", type1:"Aéroport (CDG/Orly/Beauvais)", type2:"Gare", type3:"Paris / Île-de-France", type4:"Longue distance",
-      prep:"Préparer le message", copy:"📋 Copier", send:"💬 Envoyer via WhatsApp",
-      legal:"Mentions légales · Politique de confidentialité"
-    },
-    en:{
-      sub:"Official taxi · G7 approved",
-      nav_services:"Services", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Stations", nav_map:"Map", nav_tarifs:"Fares", nav_contact:"Book",
-      kicker:"Available 24/7 · Fast booking",
-      h1:"Taxi Paris Karim",
-      lead:"Paris & Île-de-France. Airports (CDG, Orly, Beauvais), main train stations and long-distance trips. Professional and clear service.",
-      call:"📞 Call", wa:"💬 WhatsApp", book:"🗓️ Book",
-      pay_title:"Accepted payments",
-      pay_cards:"Cards (all types)",
-      pay_contactless:"Contactless",
-      pay_cash:"Cash",
-      pay_note:"Easy and secure payment in the vehicle.",
-      invoice:"🧾 Invoice on request",
-      srv_air_t:"Airports", srv_air_p:"CDG · Orly · Beauvais: departures, arrivals, terminal pick-up.",
-      srv_sta_t:"Train stations", srv_sta_p:"Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
-      srv_long_t:"Long distance", srv_long_p:"On request: Lille, Brussels, Reims, Rouen, Amiens…",
-      g7_t:"G7 network",
-      g7:[
-        "G7 is the leading taxi dispatch network in Paris.",
-        "It connects official taxis selected for reliability.",
-        "Being G7 approved ensures a professional and regulated service.",
-        "G7 is trusted by individuals and businesses.",
-        "Taxi Paris Karim is G7 approved."
-      ],
-      tarifs_t:"Fare explanation for customers",
-      tarifs_intro:"Within the Paris taxi zone, regulated airport flat fares apply. Outside this zone, rides are charged by the taximeter (regulated fare).",
-      resa_t:"Booking",
-      resa_now:"Immediate booking: €4",
-      resa_adv:"Advance booking: €7",
-      forfaits_t:"Airport flat fares",
-      cdg_rd:"CDG ↔ Paris Right Bank: €56",
-      cdg_rg:"CDG ↔ Paris Left Bank: €65",
-      orly_rd:"Orly ↔ Paris Right Bank: €45",
-      orly_rg:"Orly ↔ Paris Left Bank: €36",
-      banks_t:"Right Bank / Left Bank (Paris)",
-      rd_list:"Right Bank: 1, 2, 3, 4, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20",
-      rg_list:"Left Bank: 5, 6, 7, 13, 14, 15",
-      cdg_t:"Taxi Paris ⇄ Charles-de-Gaulle Airport (CDG)", cdg_p:"Transfers between Paris and CDG. Terminal pick-up, departures and arrivals, 24/7.",
-      seo_cdg:"Popular search: Taxi Paris CDG / Taxi CDG Paris. Easy booking by phone or WhatsApp.",
-      orly_t:"Taxi Paris ⇄ Orly Airport", orly_p:"Transfers between Paris and Orly. Terminal pick-up, departures and arrivals, 24/7.",
-      seo_orly:"Popular search: Taxi Paris Orly / Taxi Orly Paris. Punctual service, regulated fares.",
-      beauvais_t:"Taxi Beauvais ⇄ Paris", beauvais_p:"Long-distance trip between Paris and Beauvais-Tillé airport. Easy booking, punctual service.",
-      gares_t:"Paris train stations taxi", gares_p:"Transfers to/from: Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
-      map_t:"Map & service area",
-      map_p:"Paris & Île-de-France. For directions, open Google Maps and send your address.",
-      map_open:"🗺️ Open in Google Maps",
-      map_send:"📍 Send my address on WhatsApp",
-      contact_t:"Book / request an estimate", contact_hint:"Fast reply by phone or WhatsApp.",
-      type0:"Trip type…", type1:"Airport (CDG/Orly/Beauvais)", type2:"Train station", type3:"Paris / Île-de-France", type4:"Long distance",
-      prep:"Prepare the message", copy:"📋 Copy", send:"💬 Send via WhatsApp",
-      legal:"Legal notice · Privacy policy"
-    },
-    es:{
-      sub:"Taxi oficial · Autorizado G7",
-      nav_services:"Servicios", nav_cdg:"CDG", nav_orly:"Orly", nav_beauvais:"Beauvais", nav_gares:"Estaciones", nav_map:"Mapa", nav_tarifs:"Tarifas", nav_contact:"Reservar",
-      kicker:"Disponible 24/7 · Reserva rápida",
-      h1:"Taxi Paris Karim",
-      lead:"París e Île-de-France. Aeropuertos (CDG, Orly, Beauvais), estaciones principales y viajes de larga distancia. Servicio profesional y claro.",
-      call:"📞 Llamar", wa:"💬 WhatsApp", book:"🗓️ Reservar",
-      pay_title:"Pagos aceptados",
-      pay_cards:"Tarjetas (todo tipo)",
-      pay_contactless:"Sin contacto",
-      pay_cash:"Efectivo",
-      pay_note:"Pago fácil y seguro en el vehículo.",
-      invoice:"🧾 Factura bajo petición",
-      srv_air_t:"Aeropuertos", srv_air_p:"CDG · Orly · Beauvais: salidas, llegadas, recogida en terminal.",
-      srv_sta_t:"Estaciones", srv_sta_p:"Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
-      srv_long_t:"Larga distancia", srv_long_p:"Bajo pedido: Lille, Bruselas, Reims, Rouen, Amiens…",
-      g7_t:"Red G7",
-      g7:[
-        "G7 es el líder en la conexión de taxis en París.",
-        "La red agrupa taxis oficiales seleccionados por su seriedad.",
-        "Ser autorizado G7 garantiza un servicio fiable y regulado.",
-        "G7 es una referencia para particulares y empresas.",
-        "Taxi Paris Karim está autorizado por G7."
-      ],
-      tarifs_t:"Tarificación explicada a los clientes",
-      tarifs_intro:"Dentro de la zona taxi de París se aplican tarifas fijas reguladas para aeropuertos. Fuera de esta zona, se cobra por taxímetro (tarifa regulada).",
-      resa_t:"Reserva",
-      resa_now:"Reserva inmediata: 4 €",
-      resa_adv:"Reserva anticipada: 7 €",
-      forfaits_t:"Tarifas fijas aeropuerto",
-      cdg_rd:"CDG ↔ París Ribera Derecha: 56 €",
-      cdg_rg:"CDG ↔ París Ribera Izquierda: 65 €",
-      orly_rd:"Orly ↔ París Ribera Derecha: 45 €",
-      orly_rg:"Orly ↔ París Ribera Izquierda: 36 €",
-      banks_t:"Ribera Derecha / Ribera Izquierda (París)",
-      rd_list:"Ribera Derecha: 1, 2, 3, 4, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20",
-      rg_list:"Ribera Izquierda: 5, 6, 7, 13, 14, 15",
-      cdg_t:"Taxi París ⇄ Aeropuerto Charles-de-Gaulle (CDG)", cdg_p:"Traslados entre París y CDG. Recogida en terminal, salidas y llegadas, 24/7.",
-      seo_cdg:"Búsqueda popular: Taxi París CDG / Taxi CDG París. Reserva fácil por teléfono o WhatsApp.",
-      orly_t:"Taxi París ⇄ Aeropuerto de Orly", orly_p:"Traslados entre París y Orly. Recogida en terminal, salidas y llegadas, 24/7.",
-      seo_orly:"Búsqueda popular: Taxi París Orly / Taxi Orly París. Servicio puntual, tarifas reguladas.",
-      beauvais_t:"Taxi Beauvais ⇄ París", beauvais_p:"Viaje de larga distancia entre París y el aeropuerto Beauvais-Tillé. Reserva fácil, servicio puntual.",
-      gares_t:"Taxi estaciones de París", gares_p:"Traslados hacia/desde: Gare du Nord, Gare de Lyon, Montparnasse, Saint-Lazare, Est, Austerlitz.",
-      map_t:"Mapa y zona de servicio",
-      map_p:"París e Île-de-France. Para rutas, abre Google Maps y envía tu dirección.",
-      map_open:"🗺️ Abrir en Google Maps",
-      map_send:"📍 Enviar mi dirección por WhatsApp",
-      contact_t:"Reservar / pedir estimación", contact_hint:"Respuesta rápida por teléfono o WhatsApp.",
-      type0:"Tipo de viaje…", type1:"Aeropuerto (CDG/Orly/Beauvais)", type2:"Estación", type3:"París / Île-de-France", type4:"Larga distancia",
-      prep:"Preparar el mensaje", copy:"📋 Copiar", send:"💬 Enviar por WhatsApp",
-      legal:"Aviso legal · Privacidad"
+      // Beauvais approche (indicatif) seulement Beauvais -> (Paris/CDG/Orly...)
+      beauvaisApproachMin: 100,
+      beauvaisApproachMax: 120,
+
+      // Seuil devis long trajet
+      longTripKmThreshold: 80
+    };
+
+    // ----------------------------
+    // Drawer menu
+    // ----------------------------
+    const drawer = document.getElementById('drawer');
+    const openDrawerBtn = document.getElementById('openDrawer');
+    const closeDrawerBtn = document.getElementById('closeDrawer');
+
+    function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); }
+    function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
+
+    openDrawerBtn?.addEventListener('click', openDrawer);
+    closeDrawerBtn?.addEventListener('click', closeDrawer);
+    drawer?.addEventListener('click', (e) => { if(e.target === drawer) closeDrawer(); });
+
+    // ----------------------------
+    // Reveal on scroll
+    // ----------------------------
+    const io = new IntersectionObserver((entries)=>{
+      for(const en of entries){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      }
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contact display
+    document.getElementById('displayPhone').textContent = CONFIG.phoneE164;
+    document.getElementById('displayEmail').textContent = CONFIG.email;
+    document.getElementById('displayGMB').innerHTML = CONFIG.gmbUrl ? `<a href="${CONFIG.gmbUrl}" target="_blank" rel="noopener">${CONFIG.gmbUrl}</a>` : "à renseigner";
+
+    // WhatsApp link
+    const wa = document.getElementById('btnWhatsApp');
+    const waText = encodeURIComponent("Bonjour, je souhaite réserver un taxi. ");
+    wa.href = `https://wa.me/${CONFIG.phoneE164.replace(/\D/g,'')}?text=${waText}`;
+
+    // ----------------------------
+    // i18n (FR / EN / AR)
+    // ----------------------------
+    const I18N = {
+      fr: {
+        nav_sub:"Menu",
+        brand_sub:"Service premium — Paris & Île-de-France",
+        nav_services:"Services",
+        nav_tarifs:"Tarification",
+        nav_estimation:"Estimation",
+        nav_map:"Carte",
+        nav_booking:"Réservation",
+        nav_contact:"Contact",
+        drawer_tip_t:"Astuce :",
+        drawer_tip_b:"tu peux tout gérer depuis iPhone (édition du fichier + commit).",
+
+        hero_pill:"Ponctualité • Discrétion • Confort",
+        hero_h1:"Taxi premium à Paris & Île-de-France — CDG, Orly, Villepinte, Versailles",
+        hero_lead:"Une prise en charge à l’heure convenue, sans retard. Chauffeur professionnel, discret et attentif. Aide aux bagages et accompagnement si besoin. Paiements acceptés : espèces, CB, Apple Pay, Google Pay, PayPal. Facture sur demande.",
+        hero_cta1:"Réserver maintenant",
+        hero_cta2:"Estimer un trajet",
+        hero_cta3:"Voir la tarification",
+        hero_chip1_t:"Véhicule",
+        hero_chip1_b:"Toyota Corolla break — spacieux, grand coffre — jusqu’à 4 passagers.",
+        hero_chip2_t:"Zones",
+        hero_chip2_b:"Paris + zone taxi parisien + CDG/Orly/Villepinte (selon règles de tarification).",
+        hero_chip3_t:"Longue distance",
+        hero_chip3_b:"Orléans, Troyes… et plus : estimation indicative ou devis selon distance.",
+        pay_cards:"CB • Toutes cartes",
+        hero_badge:"Paris intra-muros = Paris “à l’intérieur du périphérique” (les 20 arrondissements).",
+        photo_cta:"Demander une prise en charge",
+        stat1_k:"Transferts",
+        stat2_k:"Service",
+        stat2_v:"Premium & discret",
+        stat3_k:"Option",
+        stat3_v:"Journée sur devis",
+
+        services_h2:"Services haut de gamme",
+        services_p:"Une expérience simple : réservation claire, conduite souple, et une communication efficace. Pour tout besoin spécifique (famille, bagages, horaires serrés), indique-le dans le message.",
+        s1_t:"Ponctualité & confort",
+        s1_p:"Prise en charge à l’heure convenue, sans retard. Conduite souple, discrétion et attention.",
+        s1_l1:"Chauffeur professionnel, discret et attentif",
+        s1_l2:"Aide aux bagages et accompagnement si besoin",
+        s1_l3:"Facture sur demande",
+        s2_t:"Aéroports & gares",
+        s2_p:"CDG / Orly / Villepinte : transferts réguliers, anticipation des horaires, sérénité.",
+        s2_l1:"CDG ↔ Paris • Orly ↔ Paris",
+        s2_l2:"CDG ↔ Orly (correspondances)",
+        s2_l3:"Villepinte (Parc des Expositions)",
+        s3_t:"Longue distance",
+        s3_p:"Orléans, Troyes… et au-delà. Estimation indicative ou devis selon la distance et le temps.",
+        s3_l1:"Réservation à la journée : sur devis",
+        s3_l2:"Paiement CB / sans contact",
+        s3_l3:"Message rapide via le formulaire",
+
+        tarifs_h2:"Tarification expliquée aux clients",
+        tarifs_p:"Dans la zone du taxi parisien (Paris + zone bleue + CDG/Orly/Villepinte), des règles spécifiques s’appliquent. En dehors, la course est au taximètre et peut inclure un compteur d’approche (selon distance et circulation).",
+        tarifs_bloc1_t:"Réservation",
+        tarifs_th1:"Type",
+        tarifs_th2:"Montant",
+        tarifs_th3:"Condition",
+        t_res_immed:"Réservation immédiate",
+        t_res_immed_c:"Commande et prise en charge dans ~15 min",
+        t_res_adv:"Réservation à l’avance",
+        t_res_adv_c:"Ex : aujourd’hui pour demain",
+        tarifs_note_zone:"Important : 4€ / 7€ s’applique uniquement dans la zone du taxi parisien.",
+        tarifs_bloc2_t:"Forfaits aéroports (Paris intra-muros)",
+        t_forfait_trajet:"Trajet",
+        t_forfait_prix:"Prix",
+        t_cdg_rd:"CDG ↔ Paris rive droite",
+        t_cdg_rg:"CDG ↔ Paris rive gauche",
+        t_orly_rd:"Orly ↔ Paris rive droite",
+        t_orly_rg:"Orly ↔ Paris rive gauche",
+        tarifs_note_traffic:"Les montants affichés concernent les règles de forfait. La circulation peut impacter le temps, pas le forfait.",
+        tarifs_out_t:"Hors zone taxi parisien : taximètre + compteur d’approche (si applicable)",
+        tarifs_out_p:"Hors zone, le tarif d’approche dépend de la localisation du taxi au moment de la demande et de la distance jusqu’à l’adresse. Plus le taxi est éloigné, plus le compteur d’approche peut être élevé. Les estimations sont indicatives et dépendent notamment des embouteillages.",
+        tarifs_out_ex_t:"Exemple (indicatif) :",
+        tarifs_out_ex_b:"Beauvais → Paris (ou CDG/Orly) : un compteur d’approche peut être estimé entre 100€ et 120€ selon la situation.",
+
+        est_h2:"Estimation (fourchette) — distance & temps",
+        est_p:"Cette estimation est indicative : elle se base sur la distance et le temps (Google). Le prix final dépend de la circulation, des conditions réelles et des règles applicables (zone taxi parisien / hors zone).",
+        est_form_t:"Calculer un trajet",
+        f_pickup:"Adresse de prise en charge",
+        f_dropoff:"Destination",
+        f_when:"Date & heure",
+        f_when_hint:"Pour la réservation immédiate : prise en charge ~15 min.",
+        f_pax:"Passagers",
+        f_pax_hint:"Véhicule jusqu’à 4 passagers.",
+        btn_est:"Estimer",
+        btn_loc:"Utiliser ma position",
+        btn_clear:"Effacer",
+        r_distance:"Distance",
+        r_time:"Temps estimé",
+        r_zone:"Règle appliquée",
+        r_bookingfee:"Frais de réservation",
+        r_price:"Estimation (fourchette)",
+        r_action:"Action",
+        est_rules_t:"Rappels :",
+        est_rules_b:"4€ (immédiat) ou 7€ (à l’avance) uniquement dans la zone taxi parisien. Hors zone : taximètre + possible compteur d’approche. Au-delà de 80 km : devis recommandé.",
+        est_map_t:"Carte (zone + localisation)",
+        est_map_p:"La carte affiche votre position (si autorisée), et une zone indicative. Pour une précision totale, la décision finale dépend des règles en vigueur et des communes exactes.",
+        map_badge:"Astuce : si la carte est vide, vérifie la clé API (restriction “Sites Web” + APIs activées).",
+
+        zone_h2:"Zone taxi parisien",
+        zone_p:"Dans cette zone, les règles de réservation (4€ / 7€) s’appliquent. En dehors : taximètre + éventuel compteur d’approche selon distance et circulation.",
+        zone_info_t:"Information clients",
+        zone_info_p:"La tarification varie selon la zone et l’itinéraire. L’estimation ci-dessus est indicative (distance + temps). Les embouteillages, travaux et conditions réelles peuvent modifier le temps et parfois l’approche hors zone.",
+        zone_l1:"Paris (intra-muros) est en rouge",
+        zone_l2:"La zone taxi parisien est en bleu",
+        zone_l3:"CDG / Orly / Villepinte sont inclus pour l’estimation",
+        zone_note:"Si votre prise en charge est hors zone, un devis peut être proposé.",
+
+        book_h2:"Réservation",
+        book_p:"Remplis le formulaire : nom, prénom, contact, adresses, date/heure et message. Je te confirme rapidement. Pour une réservation à la journée : sélectionne “Journée (devis)”.",
+        book_form_t:"Formulaire",
+        f_lname:"Nom",
+        f_fname:"Prénom",
+        f_phone:"Téléphone",
+        f_email:"Email (optionnel)",
+        f_type:"Type",
+        type_course:"Course",
+        type_day:"Journée (devis)",
+        f_bags:"Bagages",
+        bags_0:"0",
+        bags_1:"1–2",
+        bags_2:"3–4",
+        bags_3:"+4",
+        f_msg:"Message",
+        f_msg_hint:"Plus c’est précis, plus je confirme vite.",
+        btn_send:"Envoyer la demande",
+        book_badge:"Paiements : espèces, CB toutes cartes, Apple Pay, Google Pay, PayPal — Facture sur demande.",
+
+        contact_t:"Contact",
+        contact_p:"Mets ici ton numéro et ton email (modifiables dans le code). Ajoute aussi ton lien Google Business quand il est prêt.",
+        contact_phone_t:"Téléphone :",
+        contact_email_t:"Email :",
+        contact_gmb_t:"Google My Business :",
+        contact_note:"Les estimations sont indicatives et dépendent notamment de la circulation.",
+
+        seo_h2:"Taxi Paris & Île-de-France",
+        seo_p1:"Taxi Paris Karim propose des trajets professionnels et réglementés à Paris et en Île-de-France : transferts CDG, Orly, Villepinte, Versailles, et correspondances CDG ↔ Orly. Pour Beauvais : Paris → Beauvais, Orly → Beauvais, CDG → Beauvais (estimation indicative), et Beauvais → Paris (compteur d’approche indicatif selon disponibilité).",
+        seo_p2:"Les longues distances (Orléans, Troyes…) peuvent être estimées selon distance et temps, mais un devis est recommandé au-delà de 80 km. Hors zone taxi parisien, la course est au taximètre et peut inclure un compteur d’approche.",
+
+        foot1:"Service premium — Paris & Île-de-France • CDG • Orly • Villepinte • Versailles",
+        foot2:"© {year} — Tous droits réservés.",
+        foot_link1:"Réservation",
+        foot_link2:"Tarifs",
+        foot_link3:"Estimation",
+        foot_link4:"Zone"
+      },
+
+      en: {
+        nav_sub:"Menu",
+        brand_sub:"Premium service — Paris & Île-de-France",
+        nav_services:"Services",
+        nav_tarifs:"Pricing",
+        nav_estimation:"Estimate",
+        nav_map:"Map",
+        nav_booking:"Booking",
+        nav_contact:"Contact",
+        drawer_tip_t:"Tip:",
+        drawer_tip_b:"you can manage everything from iPhone (edit + commit).",
+
+        hero_pill:"Punctual • Discreet • Comfortable",
+        hero_h1:"Premium taxi in Paris & Île-de-France — CDG, Orly, Villepinte, Versailles",
+        hero_lead:"On-time pickup, no delays. Professional, discreet driver. Luggage help if needed. Payments: cash, cards, Apple Pay, Google Pay, PayPal. Invoice on request.",
+        hero_cta1:"Book now",
+        hero_cta2:"Estimate a ride",
+        hero_cta3:"View pricing",
+        hero_chip1_t:"Vehicle",
+        hero_chip1_b:"Toyota Corolla wagon — spacious, large trunk — up to 4 passengers.",
+        hero_chip2_t:"Areas",
+        hero_chip2_b:"Paris + taxi zone + CDG/Orly/Villepinte (pricing rules apply).",
+        hero_chip3_t:"Long distance",
+        hero_chip3_b:"Orléans, Troyes… and more: indicative estimate or quote.",
+        pay_cards:"Cards • All types",
+        hero_badge:"Paris intra-muros = inside the ring road (20 districts).",
+        photo_cta:"Request pickup",
+        stat1_k:"Transfers",
+        stat2_k:"Service",
+        stat2_v:"Premium & discreet",
+        stat3_k:"Option",
+        stat3_v:"Full-day quote",
+
+        services_h2:"High-end services",
+        services_p:"Simple experience: clear booking, smooth driving, efficient communication. Mention any special needs in the message.",
+        s1_t:"Punctuality & comfort",
+        s1_p:"On-time pickup, smooth driving, discretion and care.",
+        s1_l1:"Professional, discreet driver",
+        s1_l2:"Luggage assistance",
+        s1_l3:"Invoice on request",
+        s2_t:"Airports & stations",
+        s2_p:"CDG / Orly / Villepinte: frequent transfers, peace of mind.",
+        s2_l1:"CDG ↔ Paris • Orly ↔ Paris",
+        s2_l2:"CDG ↔ Orly connections",
+        s2_l3:"Villepinte exhibition center",
+        s3_t:"Long distance",
+        s3_p:"Orléans, Troyes… and beyond. Indicative estimate or quote depending on distance and time.",
+        s3_l1:"Full-day booking: quote",
+        s3_l2:"Card / contactless payment",
+        s3_l3:"Quick message via form",
+
+        tarifs_h2:"Pricing explained",
+        tarifs_p:"Within the Paris taxi zone (Paris + blue zone + CDG/Orly/Villepinte), specific rules apply. Outside: taximeter + possible approach meter (distance & traffic).",
+        tarifs_bloc1_t:"Booking fees",
+        tarifs_th1:"Type",
+        tarifs_th2:"Amount",
+        tarifs_th3:"Condition",
+        t_res_immed:"Immediate booking",
+        t_res_immed_c:"Pickup within ~15 min",
+        t_res_adv:"Advance booking",
+        t_res_adv_c:"Example: today for tomorrow",
+        tarifs_note_zone:"Important: 4€ / 7€ applies only within the Paris taxi zone.",
+        tarifs_bloc2_t:"Airport flat fares (Paris intra-muros)",
+        t_forfait_trajet:"Route",
+        t_forfait_prix:"Price",
+        t_cdg_rd:"CDG ↔ Paris Right Bank",
+        t_cdg_rg:"CDG ↔ Paris Left Bank",
+        t_orly_rd:"Orly ↔ Paris Right Bank",
+        t_orly_rg:"Orly ↔ Paris Left Bank",
+        tarifs_note_traffic:"Flat fares follow regulations. Traffic affects time, not the flat fare.",
+        tarifs_out_t:"Outside zone: taximeter + approach meter (if applicable)",
+        tarifs_out_p:"Outside the zone, the approach meter depends on taxi location at the time and the distance to your pickup. Estimates are indicative and traffic-dependent.",
+        tarifs_out_ex_t:"Example (indicative):",
+        tarifs_out_ex_b:"Beauvais → Paris (or CDG/Orly): approach meter may be estimated between €100 and €120 depending on the situation.",
+
+        est_h2:"Estimate (range) — distance & time",
+        est_p:"Indicative estimate based on distance and time (Google). Final price depends on traffic, real conditions and zone rules.",
+        est_form_t:"Calculate a route",
+        f_pickup:"Pickup address",
+        f_dropoff:"Destination",
+        f_when:"Date & time",
+        f_when_hint:"For immediate booking: pickup ~15 min.",
+        f_pax:"Passengers",
+        f_pax_hint:"Up to 4 passengers.",
+        btn_est:"Estimate",
+        btn_loc:"Use my location",
+        btn_clear:"Clear",
+        r_distance:"Distance",
+        r_time:"Estimated time",
+        r_zone:"Rule applied",
+        r_bookingfee:"Booking fee",
+        r_price:"Estimate (range)",
+        r_action:"Action",
+        est_rules_t:"Reminders:",
+        est_rules_b:"4€ (immediate) or 7€ (advance) only within the Paris taxi zone. Outside: taximeter + possible approach meter. Over 80 km: quote recommended.",
+        est_map_t:"Map (zone + location)",
+        est_map_p:"The map shows your location (if allowed) and an indicative zone. Exact rules depend on official boundaries.",
+        map_badge:"Tip: if the map is blank, check API key (Web restriction + APIs enabled).",
+
+        zone_h2:"Paris taxi zone",
+        zone_p:"In this zone, booking rules (4€/7€) apply. Outside: taximeter + possible approach meter.",
+        zone_info_t:"Customer info",
+        zone_info_p:"Pricing depends on zone and route. Estimates are indicative (distance + time). Traffic may change time and sometimes approach outside the zone.",
+        zone_l1:"Paris (intra-muros) is shown in red",
+        zone_l2:"Paris taxi zone is shown in blue",
+        zone_l3:"CDG / Orly / Villepinte included for estimation",
+        zone_note:"If pickup is outside zone, a quote may be proposed.",
+
+        book_h2:"Booking",
+        book_p:"Fill the form: name, contact, addresses, date/time and message. Fast confirmation. For full-day booking: select “Full-day (quote)”.",
+        book_form_t:"Form",
+        f_lname:"Last name",
+        f_fname:"First name",
+        f_phone:"Phone",
+        f_email:"Email (optional)",
+        f_type:"Type",
+        type_course:"Ride",
+        type_day:"Full-day (quote)",
+        f_bags:"Luggage",
+        bags_0:"0",
+        bags_1:"1–2",
+        bags_2:"3–4",
+        bags_3:"+4",
+        f_msg:"Message",
+        f_msg_hint:"The more precise, the faster the confirmation.",
+        btn_send:"Send request",
+        book_badge:"Payments: cash, all cards, Apple Pay, Google Pay, PayPal — Invoice on request.",
+
+        contact_t:"Contact",
+        contact_p:"Set your phone/email inside the code and add your Google Business link when ready.",
+        contact_phone_t:"Phone:",
+        contact_email_t:"Email:",
+        contact_gmb_t:"Google Business:",
+        contact_note:"Estimates are indicative and traffic-dependent.",
+
+        seo_h2:"Taxi in Paris & Île-de-France",
+        seo_p1:"Taxi Paris Karim provides professional rides in Paris and Île-de-France: CDG, Orly, Villepinte, Versailles and CDG ↔ Orly connections. Beauvais: Paris → Beauvais, Orly → Beauvais, CDG → Beauvais (indicative estimate), and Beauvais → Paris (approach meter indicative).",
+        seo_p2:"Long distance (Orléans, Troyes…) can be estimated based on distance/time, but a quote is recommended over 80 km. Outside zone: taximeter + possible approach meter.",
+
+        foot1:"Premium service — Paris & Île-de-France • CDG • Orly • Villepinte • Versailles",
+        foot2:"© {year} — All rights reserved.",
+        foot_link1:"Booking",
+        foot_link2:"Pricing",
+        foot_link3:"Estimate",
+        foot_link4:"Zone"
+      },
+
+      ar: {
+        nav_sub:"القائمة",
+        brand_sub:"خدمة فاخرة — باريس وإيل دو فرانس",
+        nav_services:"الخدمات",
+        nav_tarifs:"الأسعار",
+        nav_estimation:"تقدير",
+        nav_map:"الخريطة",
+        nav_booking:"حجز",
+        nav_contact:"تواصل",
+        drawer_tip_t:"ملاحظة:",
+        drawer_tip_b:"يمكنك إدارة كل شيء من الآيفون (تعديل الملف + Commit).",
+
+        hero_pill:"دقة • خصوصية • راحة",
+        hero_h1:"تاكسي فاخر في باريس وإيل-دو-فرانس — CDG، Orly، Villepinte، Versailles",
+        hero_lead:"استقبال في الوقت المحدد بدون تأخير. سائق محترف وهادئ مع مساعدة للأمتعة عند الحاجة. طرق الدفع: نقداً، بطاقات، Apple Pay، Google Pay، PayPal. فاتورة عند الطلب.",
+        hero_cta1:"احجز الآن",
+        hero_cta2:"قدّر الرحلة",
+        hero_cta3:"اعرض الأسعار",
+        hero_chip1_t:"السيارة",
+        hero_chip1_b:"Toyota Corolla (ستيشن) — واسعة وصندوق كبير — حتى 4 ركاب.",
+        hero_chip2_t:"المناطق",
+        hero_chip2_b:"باريس + منطقة التاكسي + CDG/Orly/Villepinte (حسب القواعد).",
+        hero_chip3_t:"مسافات طويلة",
+        hero_chip3_b:"Orléans، Troyes… تقدير تقريبي أو عرض سعر.",
+        pay_cards:"بطاقات • جميع الأنواع",
+        hero_badge:"باريس داخل الدائرة = داخل الطريق الدائري (20 حي).",
+        photo_cta:"اطلب الاستقبال",
+        stat1_k:"تنقلات",
+        stat2_k:"الخدمة",
+        stat2_v:"فاخرة وهادئة",
+        stat3_k:"خيار",
+        stat3_v:"يوم كامل (عرض سعر)",
+
+        services_h2:"خدمات راقية",
+        services_p:"تجربة بسيطة: حجز واضح، قيادة سلسة، تواصل سريع. اذكر أي متطلبات خاصة في الرسالة.",
+        s1_t:"دقة وراحة",
+        s1_p:"استقبال في الوقت المحدد وقيادة سلسة مع اهتمام وخصوصية.",
+        s1_l1:"سائق محترف وهادئ",
+        s1_l2:"مساعدة للأمتعة",
+        s1_l3:"فاتورة عند الطلب",
+        s2_t:"المطارات والمحطات",
+        s2_p:"CDG / Orly / Villepinte: تنقلات منتظمة وراحة بال.",
+        s2_l1:"CDG ↔ باريس • Orly ↔ باريس",
+        s2_l2:"CDG ↔ Orly (تبديل)",
+        s2_l3:"معرض Villepinte",
+        s3_t:"مسافات طويلة",
+        s3_p:"تقدير تقريبي أو عرض سعر حسب المسافة والوقت.",
+        s3_l1:"حجز يوم كامل: عرض سعر",
+        s3_l2:"دفع بالبطاقة/بدون تلامس",
+        s3_l3:"رسالة سريعة عبر النموذج",
+
+        tarifs_h2:"شرح الأسعار",
+        tarifs_p:"داخل منطقة تاكسي باريس (باريس + المنطقة الزرقاء + CDG/Orly/Villepinte) تُطبق قواعد خاصة. خارجها: عداد + احتمال عداد اقتراب.",
+        tarifs_bloc1_t:"رسوم الحجز",
+        tarifs_th1:"النوع",
+        tarifs_th2:"المبلغ",
+        tarifs_th3:"الشرط",
+        t_res_immed:"حجز فوري",
+        t_res_immed_c:"استقبال خلال ~15 دقيقة",
+        t_res_adv:"حجز مسبق",
+        t_res_adv_c:"مثال: اليوم للغد",
+        tarifs_note_zone:"مهم: 4€ / 7€ فقط داخل منطقة تاكسي باريس.",
+        tarifs_bloc2_t:"تعرفة ثابتة للمطارات (داخل باريس)",
+        t_forfait_trajet:"المسار",
+        t_forfait_prix:"السعر",
+        t_cdg_rd:"CDG ↔ باريس (الضفة اليمنى)",
+        t_cdg_rg:"CDG ↔ باريس (الضفة اليسرى)",
+        t_orly_rd:"Orly ↔ باريس (الضفة اليمنى)",
+        t_orly_rg:"Orly ↔ باريس (الضفة اليسرى)",
+        tarifs_note_traffic:"التعرفة الثابتة حسب التنظيم. الازدحام يؤثر على الوقت لا على التعرفة الثابتة.",
+        tarifs_out_t:"خارج المنطقة: عداد + عداد اقتراب (إن وجد)",
+        tarifs_out_p:"خارج المنطقة يعتمد عداد الاقتراب على موقع التاكسي وقت الطلب والمسافة حتى عنوان الاستقبال. التقديرات تقريبية وتتأثر بالازدحام.",
+        tarifs_out_ex_t:"مثال (تقريبي):",
+        tarifs_out_ex_b:"Beauvais → باريس (أو CDG/Orly): قد يُقدر عداد الاقتراب بين 100€ و120€ حسب الحالة.",
+
+        est_h2:"تقدير (نطاق) — المسافة والوقت",
+        est_p:"تقدير تقريبي حسب المسافة والوقت (Google). السعر النهائي يعتمد على الازدحام والقواعد.",
+        est_form_t:"احسب المسار",
+        f_pickup:"عنوان الاستقبال",
+        f_dropoff:"الوجهة",
+        f_when:"التاريخ والوقت",
+        f_when_hint:"للحجز الفوري: استقبال ~15 دقيقة.",
+        f_pax:"عدد الركاب",
+        f_pax_hint:"حتى 4 ركاب.",
+        btn_est:"تقدير",
+        btn_loc:"استخدم موقعي",
+        btn_clear:"مسح",
+        r_distance:"المسافة",
+        r_time:"الوقت المتوقع",
+        r_zone:"القاعدة المطبقة",
+        r_bookingfee:"رسوم الحجز",
+        r_price:"التقدير (نطاق)",
+        r_action:"الإجراء",
+        est_rules_t:"تذكير:",
+        est_rules_b:"4€ (فوري) أو 7€ (مسبق) فقط داخل منطقة تاكسي باريس. خارجها: عداد + احتمال اقتراب. أكثر من 80 كم: يُفضل عرض سعر.",
+        est_map_t:"الخريطة (المنطقة + الموقع)",
+        est_map_p:"الخريطة تعرض موقعك (إذا سمحت) ومنطقة تقريبية. الحدود الرسمية قد تختلف.",
+        map_badge:"إذا لم تظهر الخريطة، تحقق من مفتاح API.",
+
+        zone_h2:"منطقة تاكسي باريس",
+        zone_p:"داخل هذه المنطقة تُطبق رسوم الحجز (4€/7€). خارجها عداد + احتمال اقتراب.",
+        zone_info_t:"معلومة للزبائن",
+        zone_info_p:"الأسعار تختلف حسب المنطقة والمسار. التقديرات تقريبية وتتأثر بالازدحام.",
+        zone_l1:"باريس داخل الدائرة باللون الأحمر",
+        zone_l2:"منطقة التاكسي باللون الأزرق",
+        zone_l3:"CDG / Orly / Villepinte ضمن التقدير",
+        zone_note:"إذا كان الاستقبال خارج المنطقة قد نقترح عرض سعر.",
+
+        book_h2:"حجز",
+        book_p:"املأ النموذج: الاسم، التواصل، العناوين، الوقت والرسالة. تأكيد سريع. ليوم كامل اختر “يوم كامل (عرض سعر)”.",
+        book_form_t:"النموذج",
+        f_lname:"اللقب",
+        f_fname:"الاسم",
+        f_phone:"الهاتف",
+        f_email:"البريد (اختياري)",
+        f_type:"النوع",
+        type_course:"رحلة",
+        type_day:"يوم كامل (عرض سعر)",
+        f_bags:"الأمتعة",
+        bags_0:"0",
+        bags_1:"1–2",
+        bags_2:"3–4",
+        bags_3:"+4",
+        f_msg:"الرسالة",
+        f_msg_hint:"كلما كانت أدق كان التأكيد أسرع.",
+        btn_send:"أرسل الطلب",
+        book_badge:"الدفع: نقداً، بطاقات، Apple Pay، Google Pay، PayPal — فاتورة عند الطلب.",
+
+        contact_t:"تواصل",
+        contact_p:"ضع رقمك وبريدك في الكود وأضف رابط Google Business عند جاهزيته.",
+        contact_phone_t:"الهاتف:",
+        contact_email_t:"البريد:",
+        contact_gmb_t:"Google Business:",
+        contact_note:"التقديرات تقريبية وتتأثر بالازدحام.",
+
+        seo_h2:"تاكسي باريس وإيل-دو-فرانس",
+        seo_p1:"Taxi Paris Karim: CDG، Orly، Villepinte، Versailles و CDG ↔ Orly. Beauvais: باريس → Beauvais، Orly → Beauvais، CDG → Beauvais (تقدير تقريبي)، و Beauvais → باريس (اقتراب تقريبي).",
+        seo_p2:"المسافات الطويلة قد تحتاج عرض سعر فوق 80 كم. خارج المنطقة: عداد + احتمال اقتراب.",
+
+        foot1:"خدمة فاخرة — باريس وإيل-دو-فرانس • CDG • Orly • Villepinte • Versailles",
+        foot2:"© {year} — جميع الحقوق محفوظة.",
+        foot_link1:"حجز",
+        foot_link2:"الأسعار",
+        foot_link3:"تقدير",
+        foot_link4:"المنطقة"
+      }
+    };
+
+    function setLang(lang){
+      const dict = I18N[lang] || I18N.fr;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'fr');
+      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k = el.getAttribute('data-i18n');
+        if(dict[k] != null) el.textContent = dict[k];
+      });
+
+      // Buttons active state
+      document.getElementById('langFR').classList.toggle('active', lang==='fr');
+      document.getElementById('langEN').classList.toggle('active', lang==='en');
+      document.getElementById('langAR').classList.toggle('active', lang==='ar');
+
+      // Footer year replacement for EN/AR (optional)
+      const foot2 = document.querySelector('[data-i18n="foot2"]');
+      if(foot2 && (dict.foot2 || '').includes('{year}')){
+        foot2.textContent = dict.foot2.replace('{year}', new Date().getFullYear());
+      }
     }
-  };
 
-  function setLang(lang){
-    localStorage.setItem("lang", lang);
-    document.documentElement.lang = lang;
-    document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
-    document.querySelectorAll("[data-i18n]").forEach(el=>{
-      const k = el.getAttribute("data-i18n");
-      if(T[lang][k]) el.textContent = T[lang][k];
+    document.getElementById('langFR').addEventListener('click', ()=>setLang('fr'));
+    document.getElementById('langEN').addEventListener('click', ()=>setLang('en'));
+    document.getElementById('langAR').addEventListener('click', ()=>setLang('ar'));
+
+    // default
+    setLang('fr');
+
+    // ----------------------------
+    // Booking form -> mailto (simple, no backend)
+    // ----------------------------
+    document.getElementById('btnSend').addEventListener('click', ()=>{
+      const data = {
+        last: document.getElementById('lname').value.trim(),
+        first: document.getElementById('fname').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        pickup: document.getElementById('b_pickup').value.trim(),
+        dropoff: document.getElementById('b_dropoff').value.trim(),
+        when: document.getElementById('b_when').value,
+        type: document.getElementById('b_type').value,
+        pax: document.getElementById('b_pax').value,
+        bags: document.getElementById('b_bags').value,
+        msg: document.getElementById('msg').value.trim()
+      };
+
+      if(!data.last || !data.first || !data.phone || !data.pickup || !data.dropoff){
+        alert("Merci de renseigner au minimum : nom, prénom, téléphone, prise en charge et destination.");
+        return;
+      }
+
+      const subject = encodeURIComponent(`Réservation taxi — ${data.first} ${data.last}`);
+      const body = encodeURIComponent(
+        `Nom: ${data.last}\nPrénom: ${data.first}\nTéléphone: ${data.phone}\nEmail: ${data.email || "-"}\n\nPrise en charge: ${data.pickup}\nDestination: ${data.dropoff}\nDate/Heure: ${data.when || "-"}\nType: ${data.type}\nPassagers: ${data.pax}\nBagages: ${data.bags}\n\nMessage:\n${data.msg || "-"}\n`
+      );
+
+      window.location.href = `mailto:${CONFIG.email}?subject=${subject}&body=${body}`;
     });
-    const g7 = document.getElementById("g7Lines");
-    g7.innerHTML = T[lang].g7.map(line => `<p>${line}</p>`).join("");
-  }
 
-  function makeMsg(){
-    const lang = localStorage.getItem("lang") || "fr";
-    const type = document.getElementById("type").value;
-    const d = document.getElementById("date").value;
-    const t = document.getElementById("time").value;
-    const p = document.getElementById("pickup").value;
-    const a = document.getElementById("drop").value;
-    const n = document.getElementById("note").value;
+    // ----------------------------
+    // Google Maps + Estimation
+    // ----------------------------
+    let map, userMarker, pickupAC, dropoffAC, bPickupAC, bDropoffAC;
+    let zoneCircle, parisRect, vemarsCircle;
+    const PARIS_CENTER = {lat:48.8566, lng:2.3522};
 
-    const intro = lang==="fr" ? "Bonjour, je souhaite réserver un taxi (Taxi Paris Karim)." :
-                  lang==="en" ? "Hello, I would like to book a taxi (Taxi Paris Karim)." :
-                                "Hola, me gustaría reservar un taxi (Taxi Paris Karim).";
-    const thanks = lang==="fr" ? "Merci !" : (lang==="en" ? "Thank you!" : "¡Gracias!");
+    function money(n){ return (Math.round(n*10)/10).toFixed(0) + "€"; }
 
-    const msg = `${intro}\nType: ${type}\nDate: ${d} ${t}\nDépart/Pick-up: ${p}\nDestination: ${a}\nInfos: ${n || "-"}\n${thanks}`;
-    document.getElementById("out").textContent = msg;
-    document.getElementById("waBtn").href = "https://wa.me/33781615418?text=" + encodeURIComponent(msg);
-    return msg;
-  }
+    function minutesBetween(now, dt){
+      return Math.round((dt.getTime() - now.getTime())/60000);
+    }
 
-  function copyMsg(){
-    const msg = makeMsg();
-    navigator.clipboard.writeText(msg).then(()=>alert("✅ Copié"));
-  }
+    function isBeauvais(placeText){
+      const t = (placeText||"").toLowerCase();
+      return t.includes("beauvais");
+    }
+    function isCDG(placeText){
+      const t = (placeText||"").toLowerCase();
+      return t.includes("charles") || t.includes("cdg") || t.includes("roissy");
+    }
+    function isOrly(placeText){
+      const t = (placeText||"").toLowerCase();
+      return t.includes("orly") || t.includes("ory");
+    }
+    function isVillepinte(placeText){
+      const t = (placeText||"").toLowerCase();
+      return t.includes("villepinte") || t.includes("parc des expositions") || t.includes("parc expo");
+    }
+    function isParisIntra(placeText){
+      const t = (placeText||"").toLowerCase();
+      return t.includes("paris") && !t.includes("beauvais"); // basic
+    }
 
-  const saved = localStorage.getItem("lang") || "fr";
-  setLang(saved);
-</script>
+    // Heuristique de "zone taxi parisien" (sans polygone officiel) :
+    // - Paris intra-muros OU
+    // - CDG / Orly / Villepinte OU
+    // - dans un rayon de Vémars (15km) (logique interne demandée)
+    async function isInTaxiZone(pickupText, pickupLatLng){
+      if(isParisIntra(pickupText) || isCDG(pickupText) || isOrly(pickupText) || isVillepinte(pickupText)) return true;
+
+      // Vémars radius check (Distance Matrix)
+      try{
+        const dm = new google.maps.DistanceMatrixService();
+        const res = await new Promise((resolve,reject)=>{
+          dm.getDistanceMatrix({
+            origins: [pickupLatLng],
+            destinations: [{lat: CONFIG.vemarsLat, lng: CONFIG.vemarsLng}],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC
+          }, (r, status)=>{
+            if(status !== "OK") reject(status);
+            else resolve(r);
+          });
+        });
+        const meters = res.rows?.[0]?.elements?.[0]?.distance?.value;
+        if(typeof meters === "number"){
+          const km = meters/1000;
+          return km <= CONFIG.vemarsRadiusKm;
+        }
+      }catch(e){}
+      return false;
+    }
+
+    function drawZones(){
+      // Paris approx rectangle (indicatif) — rouge
+      parisRect = new google.maps.Rectangle({
+        bounds: {
+          north: 48.902,
+          south: 48.815,
+          east: 2.469,
+          west: 2.224
+        },
+        strokeColor: "#ff3b3b",
+        strokeOpacity: 0.95,
+        strokeWeight: 2,
+        fillColor: "#ff3b3b",
+        fillOpacity: 0.08,
+        map
+      });
+
+      // Taxi zone indicative circle — bleu
+      zoneCircle = new google.maps.Circle({
+        center: PARIS_CENTER,
+        radius: 25000, // 25km indicative
+        strokeColor: "#6bbcff",
+        strokeOpacity: 0.9,
+        strokeWeight: 2,
+        fillColor: "#6bbcff",
+        fillOpacity: 0.06,
+        map
+      });
+
+      // Vémars circle (internal logic)
+      vemarsCircle = new google.maps.Circle({
+        center: {lat: CONFIG.vemarsLat, lng: CONFIG.vemarsLng},
+        radius: CONFIG.vemarsRadiusKm * 1000,
+        strokeColor: "#d6b36a",
+        strokeOpacity: 0.85,
+        strokeWeight: 2,
+        fillColor: "#d6b36a",
+        fillOpacity: 0.05,
+        map
+      });
+    }
+
+    function setUserMarker(latlng){
+      if(!userMarker){
+        userMarker = new google.maps.Marker({
+          position: latlng,
+          map,
+          title: "Votre position",
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 8,
+            fillColor: "#7CFFB2",
+            fillOpacity: 1,
+            strokeColor: "#0b0c10",
+            strokeWeight: 2
+          }
+        });
+      }else{
+        userMarker.setPosition(latlng);
+      }
+      map.panTo(latlng);
+    }
+
+    async function estimateRoute(){
+      const pickup = document.getElementById('pickup').value.trim();
+      const dropoff = document.getElementById('dropoff').value.trim();
+      if(!pickup || !dropoff){
+        alert("Merci de renseigner une prise en charge et une destination.");
+        return;
+      }
+
+      const whenVal = document.getElementById('when').value;
+      const now = new Date();
+      const when = whenVal ? new Date(whenVal) : null;
+
+      // Distance Matrix for time/distance
+      const dm = new google.maps.DistanceMatrixService();
+      const dmRes = await new Promise((resolve,reject)=>{
+        dm.getDistanceMatrix({
+          origins: [pickup],
+          destinations: [dropoff],
+          travelMode: google.maps.TravelMode.DRIVING,
+          unitSystem: google.maps.UnitSystem.METRIC
+        }, (r, status)=>{
+          if(status !== "OK") reject(status);
+          else resolve(r);
+        });
+      });
+
+      const el = dmRes.rows?.[0]?.elements?.[0];
+      if(!el || el.status !== "OK"){
+        alert("Impossible de calculer l’itinéraire. Vérifie les adresses.");
+        return;
+      }
+
+      const meters = el.distance.value;
+      const seconds = el.duration.value;
+      const km = meters/1000;
+      const mins = Math.round(seconds/60);
+
+      // Get pickup latlng via Geocoder (needed for zone logic)
+      const gc = new google.maps.Geocoder();
+      const geo = await new Promise((resolve,reject)=>{
+        gc.geocode({address: pickup}, (res, status)=>{
+          if(status !== "OK" || !res?.[0]) reject(status);
+          else resolve(res[0]);
+        });
+      });
+      const pickupLatLng = geo.geometry.location;
+
+      const inZone = await isInTaxiZone(pickup, pickupLatLng);
+
+      // Booking fee only applies in taxi zone
+      let bookingFee = 0;
+      if(inZone){
+        if(when){
+          const diffMin = minutesBetween(now, when);
+          bookingFee = (diffMin <= CONFIG.bookingImmediateMinutes) ? CONFIG.bookingFeeImmediate : CONFIG.bookingFeeAdvance;
+        }else{
+          // if no date/time, assume immediate
+          bookingFee = CONFIG.bookingFeeImmediate;
+        }
+      }
+
+      // Pricing model (indicatif)
+      // - If in zone: estimate based on distance + time (premium taxi estimate), then add booking fee (4/7)
+      // - If out of zone: show "devis" or taximeter note + possible approach
+      // - If > 80 km: devis recommended
+      // - Beauvais logic:
+      //   - Beauvais -> (Paris/CDG/Orly/zone) : add approach 100-120€ (range) + ride estimate
+      //   - (Paris/CDG/Orly/zone) -> Beauvais : booking 4/7 only (no approach fixed), estimate still indicative
+
+      const pickupIsBeauvais = isBeauvais(pickup);
+      const dropIsBeauvais = isBeauvais(dropoff);
+
+      let ruleText = "";
+      let priceMin = 0;
+      let priceMax = 0;
+      let note = "";
+      let action = "";
+
+      // base estimate from distance/time (rough premium range)
+      // tuned to feel "premium": base + km + time
+      // (You can adjust after testing.)
+      const base = 8;
+      const kmRateMin = 1.6;
+      const kmRateMax = 2.1;
+      const timeRateMin = 0.35; // per minute
+      const timeRateMax = 0.55;
+
+      let rideMin = base + km*kmRateMin + mins*timeRateMin;
+      let rideMax = base + km*kmRateMax + mins*timeRateMax;
+
+      // If airport flat fares Paris intra -> apply when applicable (only indicative: show as rule)
+      // We keep your official forfaits for those routes as priority
+      const isParis = isParisIntra(pickup) || isParisIntra(dropoff);
+      if(isParis && (isCDG(pickup)||isCDG(dropoff) || isOrly(pickup)||isOrly(dropoff))){
+        // Determine bank (rive droite/gauche) by destination keyword (simple)
+        // For better accuracy, you can add a selector later.
+        const textAll = (pickup + " " + dropoff).toLowerCase();
+        const isRight = textAll.includes("rive droite") || textAll.includes("1er") || textAll.includes("2e") || textAll.includes("3e") || textAll.includes("4e") || textAll.includes("8e") || textAll.includes("9e") || textAll.includes("10e") || textAll.includes("11e") || textAll.includes("12e") || textAll.includes("17e") || textAll.includes("18e") || textAll.includes("19e") || textAll.includes("20e");
+        const isLeft = textAll.includes("rive gauche") || textAll.includes("5e") || textAll.includes("6e") || textAll.includes("7e") || textAll.includes("13e") || textAll.includes("14e") || textAll.includes("15e") || textAll.includes("16e");
+
+        if(isCDG(pickup) || isCDG(dropoff)){
+          const forfait = isLeft ? 65 : (isRight ? 56 : null);
+          if(forfait){
+            rideMin = forfait;
+            rideMax = forfait;
+            ruleText = "Forfait aéroport (CDG ↔ Paris intra-muros)";
+            note = "Forfait réglementé (le temps dépend de la circulation).";
+          }
+        }
+        if(isOrly(pickup) || isOrly(dropoff)){
+          const forfait = isLeft ? 36 : (isRight ? 45 : null);
+          if(forfait){
+            rideMin = forfait;
+            rideMax = forfait;
+            ruleText = "Forfait aéroport (Orly ↔ Paris intra-muros)";
+            note = "Forfait réglementé (le temps dépend de la circulation).";
+          }
+        }
+      }
+
+      // Long distance threshold
+      const longTrip = km >= CONFIG.longTripKmThreshold;
+
+      if(!inZone){
+        ruleText = "Hors zone taxi parisien";
+        action = "Devis recommandé";
+        // show only indicative meter estimate range
+        priceMin = rideMin;
+        priceMax = rideMax;
+        note = "Hors zone : tarification au taximètre. Un compteur d’approche peut s’ajouter selon la distance entre le taxi et votre adresse au moment de la demande. Estimation indicative (circulation, travaux…).";
+      } else {
+        ruleText = ruleText || "Zone taxi parisien (réservation 4€ / 7€)";
+        priceMin = rideMin + bookingFee;
+        priceMax = rideMax + bookingFee;
+        action = longTrip ? "Devis conseillé" : "Réservable";
+        if(!note){
+          note = "Estimation indicative (distance + temps). La circulation peut modifier le temps. Les 4€ / 7€ s’appliquent uniquement dans la zone taxi parisien.";
+        }
+      }
+
+      // Beauvais special handling
+      if(pickupIsBeauvais && !dropIsBeauvais){
+        // Beauvais -> zone (Paris/CDG/Orly etc) : add approach 100-120€ in addition
+        // NOTE: you asked approach 100-120 applies Beauvais -> Paris (we extend to zone destinations)
+        priceMin += CONFIG.beauvaisApproachMin;
+        priceMax += CONFIG.beauvaisApproachMax;
+        ruleText = "Beauvais → destination (approche indicative)";
+        action = "Devis recommandé";
+        note = "Beauvais → Paris/CDG/Orly : un compteur d’approche peut être estimé entre 100€ et 120€ selon disponibilité et circulation. Estimation indicative.";
+      }
+      if(!pickupIsBeauvais && dropIsBeauvais){
+        // Zone -> Beauvais : booking fee in zone, no fixed approach
+        ruleText = "Destination Beauvais (estimation indicative)";
+        note = "Beauvais n’est pas un forfait : estimation indicative au taximètre (distance + temps).";
+      }
+
+      // If long trip: push to quote
+      if(longTrip){
+        action = "Devis recommandé (≥ 80 km)";
+        note += " Au-delà de 80 km : devis recommandé (prix dépend du temps, du trafic et des conditions).";
+      }
+
+      // Update UI
+      document.getElementById('result').style.display = "grid";
+      document.getElementById('rDistance').textContent = (km.toFixed(1) + " km");
+      document.getElementById('rTime').textContent = (mins + " min");
+      document.getElementById('rRule').textContent = ruleText;
+      document.getElementById('rBookFee').textContent = inZone ? (bookingFee + "€") : "—";
+      document.getElementById('rPrice').textContent = `${money(priceMin)} – ${money(priceMax)}`;
+      document.getElementById('rAction').textContent = action;
+      document.getElementById('rNote').textContent = note;
+
+      // Also pan map to pickup if possible
+      if(map){
+        map.panTo(pickupLatLng);
+        map.setZoom(11);
+      }
+    }
+
+    document.getElementById('btnEstimate').addEventListener('click', ()=>estimateRoute().catch(err=>{
+      console.error(err);
+      alert("Erreur estimation. Vérifie la clé API, la facturation Google, ou les adresses.");
+    }));
+
+    document.getElementById('btnClear').addEventListener('click', ()=>{
+      ["pickup","dropoff","when"].forEach(id=>document.getElementById(id).value="");
+      document.getElementById('result').style.display="none";
+    });
+
+    document.getElementById('btnLocate').addEventListener('click', ()=>{
+      if(!navigator.geolocation){
+        alert("Géolocalisation non disponible sur ce navigateur.");
+        return;
+      }
+      navigator.geolocation.getCurrentPosition((pos)=>{
+        const latlng = {lat: pos.coords.latitude, lng: pos.coords.longitude};
+        setUserMarker(latlng);
+        // reverse geocode to fill pickup
+        const gc = new google.maps.Geocoder();
+        gc.geocode({location: latlng}, (res, status)=>{
+          if(status === "OK" && res?.[0]){
+            document.getElementById('pickup').value = res[0].formatted_address;
+          }
+        });
+      }, ()=>{
+        alert("Autorise la localisation pour utiliser cette fonction.");
+      }, {enableHighAccuracy:true, timeout:12000});
+    });
+
+    // ----------------------------
+    // initMap callback
+    // ----------------------------
+    window.initMap = function(){
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: PARIS_CENTER,
+        zoom: 10,
+        styles: [
+          {elementType:"geometry", stylers:[{color:"#0b0c10"}]},
+          {elementType:"labels.text.fill", stylers:[{color:"#f7f6f2"}]},
+          {elementType:"labels.text.stroke", stylers:[{color:"#0b0c10"}]},
+          {featureType:"administrative", elementType:"geometry.stroke", stylers:[{color:"#2b2c33"}]},
+          {featureType:"poi", elementType:"labels.text.fill", stylers:[{color:"#d6b36a"}]},
+          {featureType:"road", elementType:"geometry", stylers:[{color:"#151824"}]},
+          {featureType:"road", elementType:"geometry.stroke", stylers:[{color:"#232635"}]},
+          {featureType:"road", elementType:"labels.text.fill", stylers:[{color:"#c9c7c0"}]},
+          {featureType:"transit", elementType:"geometry", stylers:[{color:"#141725"}]},
+          {featureType:"water", elementType:"geometry", stylers:[{color:"#0a1220"}]},
+          {featureType:"water", elementType:"labels.text.fill", stylers:[{color:"#6bbcff"}]}
+        ],
+        mapTypeControl:false,
+        streetViewControl:false,
+        fullscreenControl:true
+      });
+
+      drawZones();
+
+      // Autocomplete
+      const opts = { fields: ["formatted_address","geometry","name"], types: ["geocode"] };
+      pickupAC = new google.maps.places.Autocomplete(document.getElementById("pickup"), opts);
+      dropoffAC = new google.maps.places.Autocomplete(document.getElementById("dropoff"), opts);
+      bPickupAC = new google.maps.places.Autocomplete(document.getElementById("b_pickup"), opts);
+      bDropoffAC = new google.maps.places.Autocomplete(document.getElementById("b_dropoff"), opts);
+
+      pickupAC.addListener("place_changed", ()=>{
+        const p = pickupAC.getPlace();
+        if(p?.geometry?.location){
+          map.panTo(p.geometry.location);
+          map.setZoom(12);
+        }
+      });
+
+      // Try auto locate silently (if allowed)
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition((pos)=>{
+          setUserMarker({lat: pos.coords.latitude, lng: pos.coords.longitude});
+        }, ()=>{}, {enableHighAccuracy:false, timeout:4000});
+      }
+    };
+  </script>
+
+  <!-- Google Maps JS (TA CLÉ) -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFo8dagVZdTfgGoAqmflLeA8xVNPB_cus&librariesqp=places&callback=initMap"
+    async
+    defer
+  ></script>
 </body>
 </html>
